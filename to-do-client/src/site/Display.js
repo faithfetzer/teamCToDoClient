@@ -8,6 +8,7 @@ const Display = () => {
 
     return(
         <div>
+            <Auth />
             Display Body
         </div>
     )
