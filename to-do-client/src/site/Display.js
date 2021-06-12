@@ -3,6 +3,7 @@
 // when logged in has list view/create/edit/delete displayed
 
 import React from 'react';
+import Auth from '../components/Auth/Auth';
 
 const Display = () => {
 
