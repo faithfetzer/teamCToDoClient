@@ -1,8 +1,9 @@
 // login and register
 import React, { useState } from 'react';
+import APIURL from '../../helpers/environment';
 import './Auth.css';
 
-const Auth = props => {
+const Auth = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const Auth = props => {
     const title = () => {
         return login ? 'Login' : 'Signup';
     }
+
     const loginToggle = (e) => {
         e.preventDefault();
         setLogin(!login);
@@ -20,6 +22,7 @@ const Auth = props => {
         setFirstName('');
         setLastName('');
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let reqBody = login ?
@@ -30,11 +33,15 @@ const Auth = props => {
         {
             firstName: firstName,
             lastName: lastName,
-            email: password
+            email: email,
+            password: password
         }
         let url = login ?
-        'http://localhost:4000/user/login' :
-        'http://localhost:4000/user/register';
+        `${APIURL}/user/login` :
+        `${APIURL}/user/register`;
+
+    console.log(url)
+
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(reqBody),
@@ -46,6 +53,7 @@ const Auth = props => {
     .then(json => props.updateLocalStorage(json.token))
     .catch(err => console.log(err));
     }
+    
     const signupFields = () => !login ?
     (
         <div>
@@ -69,7 +77,7 @@ const Auth = props => {
                 <br />
                 <label htmlFor="password">Password</label>
                 <br />
-                <inpyt type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
                 <button onClick={loginToggle}>Login/Signup Toggle</button>
                 <br />
