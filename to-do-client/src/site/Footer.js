@@ -6,7 +6,7 @@ const Footer = () => {
 
     return(
         <div>
-            Footer
+            &copy; Faith Fetzer, Hope Acuna, Jessica Washington, Rodney Gaines 
         </div>
     )
 }

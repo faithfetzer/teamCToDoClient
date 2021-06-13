@@ -5,18 +5,38 @@
 import React, { useEffect, useState } from "react";
 import Auth from "../components/Auth/Auth";
 import ListFetch from '../components/Lists/ListFetch';
+import Welcome from '../components/Welcome/Welcome';
 
 const Display = (props) => {
     console.log(props);
+    console.log(props.loginStatus)
+
+    useEffect(() => {
+        displayView()
+    }, [props.loginStatus]);
 
     const displayView = () => {
-        return props.sessionToken !== undefined ? <ListFetch sessionToken={props.sessionToken} /> : <Auth updateLocalStorage={props.updateLocalStorage} />
+        if(props.loginStatus === 'login' || props.loginStatus === 'signup'){
+            return(
+                // need to separate out toggle for login/signup fields
+                <Auth updateLocalStorage={props.updateLocalStorage} clearLocalStorage={props.clearLocalStorage} sessionToken={props.sessionToken} loginStatus={props.loginStatus} setLoginStatus={props.setLoginStatus}/>
+            )
+        } else if(props.loginStatus === 'signedIn'){
+            return(
+                <ListFetch/>
+            )
+        } else {
+            return(
+                <Welcome/>
+            )
+        }
     }
 
     return (
         <div>
             {displayView()}
-            <ListFetch />
+            {/* <ListFetch /> */}
+            {/* put the above line so we can see the list being displayed while working on getting the displayView function working */}
         </div>
     );
 };

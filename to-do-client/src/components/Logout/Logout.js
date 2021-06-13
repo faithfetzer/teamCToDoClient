@@ -4,14 +4,10 @@ import Auth from '../Auth/Auth';
 
 const Logout = (props) => {
     console.log(props);
-    const clearToken = () =>{
-        console.log('logout')
-        localStorage.clear();
-    }
 
     return(
         <div>
-            <button onClick={clearToken}>Logout</button>
+            <button onClick={props.clearLocalStorage, props.logoutButton}>Logout</button>
         </div>
     )
 }
