@@ -5,7 +5,7 @@ const DisplayList = (props) => {
     console.log(props);
     return(
         <>
-            {
+            {/* {
                 props.pie.map((list,key) => {
                     return(
                         <tr key={key}>
@@ -15,11 +15,11 @@ const DisplayList = (props) => {
                             <td>{list.description}</td>
                             <td>{list.duration}</td>
                             <td>{list.completed}</td>
-                            {/* <td>{list.important}</td> */}
+                            <td>{list.important}</td>
                         </tr>
                     )
                 })
-            }
+            } */}
         </>
     )
 }

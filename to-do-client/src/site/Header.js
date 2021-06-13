@@ -7,13 +7,17 @@
 import React from 'react';
 import Login from '../components/Auth/Auth';
 import Logout from '../components/Logout/Logout'
+import Auth from '../components/Auth/Auth'
 
-const Header = () => {
+const Header = (props) => {
+    console.log(props);
 
+    const buttonToggle = () =>{
+        return props.sessionToken === undefined ? <Auth updateLocalStorage={props.updateLocalStorage}/> : <Logout clearLocalStorage={props.clearLocalStorage}/>
+    }
     return(
         <div>
-            Header/Navbar
-            <Logout/>
+            {buttonToggle()}
         </div>
     )
 }

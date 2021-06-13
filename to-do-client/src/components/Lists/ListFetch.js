@@ -14,7 +14,7 @@ const List = props => {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                // 'Authorization': props.sessionToken
+                'Authorization': props.sessionToken
             })
         })
         .then(res => res.json())
@@ -24,7 +24,7 @@ const List = props => {
     useEffect(() => {
         fetchList();
     })
-   
+
 
 
 
@@ -44,7 +44,7 @@ const List = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    <DisplayList list={list} />
+                    <DisplayList/>
                 </tbody>
             </table>
         </>
