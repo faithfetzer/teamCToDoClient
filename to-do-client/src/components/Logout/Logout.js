@@ -4,15 +4,14 @@ import Auth from '../Auth/Auth';
 
 const Logout = (props) => {
     console.log(props);
-    // const clearToken = () =>{
-    //     console.log('logout')
-    //     localStorage.clear();
-    //     setSessionToken('');
-    // }
+    const clearToken = () =>{
+        console.log('logout')
+        localStorage.clear();
+    }
 
     return(
         <div>
-            <button>Logout</button>
+            <button onClick={clearToken}>Logout</button>
         </div>
     )
 }
