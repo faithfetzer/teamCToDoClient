@@ -1,15 +1,20 @@
 import React from 'react';
-import './Logout.css';
-//import logoutPic from '../../assets/logout.jpg'
+import Auth from '../Auth/Auth';
 
 
+const Logout = (props) => {
+    console.log(props);
+    // const clearToken = () =>{
+    //     console.log('logout')
+    //     localStorage.clear();
+    //     setSessionToken('');
+    // }
 
-// const Logout = (props) => {
-//     return(
-//         <div>
-//             <img id='logout' src={logoutPic} alt = "powerButton" onClick={props.clearSession} />
-//         </div>
-//     )
-// }
+    return(
+        <div>
+            <button>Logout</button>
+        </div>
+    )
+}
 
-// export default Logout;
+export default Logout;
