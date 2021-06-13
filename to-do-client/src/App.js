@@ -1,10 +1,14 @@
-
 import './App.css';
+import Footer from './site/Footer'
+import Header from './site/Header'
+import Display from './site/Display'
 
 function App() {
   return (
     <div className="App">
-      To Do List
+      <Header/>
+      <Display className="welcome-page"/>
+      <Footer/>
     </div>
   );
 }

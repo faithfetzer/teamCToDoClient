@@ -24,3 +24,4 @@ function updateList() {
     })
 }
 
+// goes to /list/update endpoint
