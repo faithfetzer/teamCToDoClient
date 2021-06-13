@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import APIURL from '../../helpers/environment';
 import './Auth.css';
 
+// need to separate out login/signup fields, leaving auth with toggle for now- FF
 const Auth = (props) => {
     console.log(props)
     const [firstName, setFirstName] = useState('');
@@ -11,18 +12,20 @@ const Auth = (props) => {
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
     
-    const title = () => {
-        return login ? 'Login' : 'Signup';
+    const title = () => props.loginStatus == 'login' ? 'Login' : "Sign Up For a New Account"
+
+    const signedIn = () =>{
+        props.setLoginStatus('signedIn');
     }
 
-    const loginToggle = (e) => {
-        e.preventDefault();
-        setLogin(!login);
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
-    }
+    // const loginToggle = (e) => {
+    //     e.preventDefault();
+    //     setLogin(!login);
+    //     setEmail('');
+    //     setPassword('');
+    //     setFirstName('');
+    //     setLastName('');
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,10 +55,11 @@ const Auth = (props) => {
     })
     .then(res => res.json())
     .then(json => props.updateLocalStorage(json.token))
+    .then(signedIn())
     .catch(err => console.log(err));
     }
     
-    const signupFields = () => !login ?
+    const signupFields = () => props.loginStatus !== 'login' ?
     (
         <div>
             <label htmlFor='firstName'>First Name</label>
@@ -80,7 +84,7 @@ const Auth = (props) => {
                 <br />
                 <input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
-                <button onClick={loginToggle}>Login/Signup Toggle</button>
+                {/* <button onClick={loginToggle}>Login/Signup Toggle</button> */}
                 <br />
                 <button type ="submit" onClick={handleSubmit}>Submit</button>
             </form>

@@ -5,15 +5,38 @@
 // when logged in, only shows logout
 
 import React from 'react';
-import Login from '../components/Auth/Auth';
 import Logout from '../components/Logout/Logout'
 import Auth from '../components/Auth/Auth'
 
 const Header = (props) => {
-    console.log(props);
+    // console.log(props);
+
+    const loginButton =() => props.setLoginStatus('login');
+    const signupButton =() => props.setLoginStatus('signup');
+    const logoutButton =() => props.setLoginStatus(undefined);
 
     const buttonToggle = () =>{
-        return props.sessionToken === undefined ? <Auth updateLocalStorage={props.updateLocalStorage}/> : <Logout clearLocalStorage={props.clearLocalStorage}/>
+        // console.log(props.loginStatus)
+        if(props.loginStatus === 'login'){
+            return(
+                <button onClick={signupButton}>Signup</button>
+            )
+        } else if(props.loginStatus === 'signup'){
+            return(
+                <button onClick={loginButton}>Login</button>
+            )
+        } else if(props.loginStatus === 'signedIn'){
+            return(
+                <Logout logoutButton={logoutButton} clearLocalStorage={props.clearLocalStorage}/>
+            )
+        } else {
+            return(
+                <div>
+                    <button onClick={loginButton}>Login</button>
+                    <button onClick={signupButton}>Signup</button>
+                </div>
+            )
+        } 
     }
     return(
         <div>

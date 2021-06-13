@@ -7,14 +7,30 @@ import Auth from './components/Auth/Auth'
 
 const App = (props) => {
 
-  console.log(props);
+  // console.log(props);
   const [sessionToken, setSessionToken] = useState(undefined);
+  const [loginStatus, setLoginStatus] = useState(undefined);
+
+//   const title = () => {
+//     return login ? 'Login' : 'Signup';
+// }
+
+// const loginToggle = (e) => {
+//     e.preventDefault();
+//     setLogin(!login);
+//     setEmail('');
+//     setPassword('');
+//     setFirstName('');
+//     setLastName('');
+
+// }
+
 
     useEffect(() => {
         if (localStorage.getItem("token")) {
             setSessionToken(localStorage.getItem("token"));
         }
-    });
+    }, []);
 
     const updateLocalStorage = (newToken) => {
         localStorage.setItem("token", newToken);
@@ -28,8 +44,8 @@ const App = (props) => {
 
   return (
     <div className="App">
-      <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken}/>
-      <Display className="welcome-page" updateLocalStorage={updateLocalStorage}/>
+      <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+      <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
       <Footer/>
     </div>
   );
