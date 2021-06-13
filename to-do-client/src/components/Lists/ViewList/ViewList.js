@@ -25,3 +25,4 @@ const DisplayList = (props) => {
 }
 
 export default DisplayList;
+// goes to /list/ endpoint
