@@ -2,7 +2,8 @@ import './App.css';
 import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
-import Auth from './components/Auth/Auth'
+//import Auth from './components/Auth/Auth'
+import EditListItem from './components/Lists/EditListItem/EditListItem';
 
 const App = (props) => {
 
@@ -13,6 +14,7 @@ const App = (props) => {
       <Header/>
       <Display className="welcome-page"/>
       <Footer/>
+      <EditListItem />
     </div>
   );
 }
