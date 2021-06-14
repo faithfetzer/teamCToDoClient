@@ -1,13 +1,14 @@
 import React from "react";
 import {Table} from 'reactstrap';
 import EditListItem from '../EditListItem/EditListItem';
+import APIURL from '../../../helpers/environment';
 
 
 const DisplayList = (props) => {
-    console.log(props);
+    // console.log(props);
 
     const deleteListItem = (props) => {
-        fetch(`http://localhost:3000/list/${props.list.id}`, {
+        fetch(`${APIURL}/list/${props.list.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -22,15 +23,17 @@ const DisplayList = (props) => {
         return props.list.map((list, index) => {
             return(
                 <tr key={index}>
-                    <th scope="row">{list.id}</th>
+                    {/* <th scope="row">{list.id}</th> */}
                     <td>{list.name}</td>
                     <td>{list.date}</td>
                     <td>{list.timedue}</td>
                     <td>{list.description}</td>
-                     <td>{list.duration}</td>
-                     <td>{list.completed}</td>
-                     <td><button  onClick={() => {deleteListItem(props)}}>Delete</button></td>
-                     <td>{list.important}</td>
+                    <td>{list.duration}</td>
+                    <td>{list.completed}</td>
+                    <td>{list.important}</td>
+                    <td><button>Edit</button></td>
+                    <td><button  onClick={() => {deleteListItem(props)}}>Delete</button></td>
+                    
                 </tr>
             )
         })
@@ -51,6 +54,9 @@ const DisplayList = (props) => {
                     <th>description</th>
                     <th>duration</th>
                     <th>completed</th>
+                    <th>important</th>
+                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -59,7 +65,7 @@ const DisplayList = (props) => {
         </Table>
 
         <EditListItem sessionToken={props.sessionToken} list={props.list}/>
-              </>
+        </>
     )
 }
 

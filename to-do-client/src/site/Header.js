@@ -42,7 +42,7 @@ const Header = (props) => {
         } 
     }
     return(
-        <Layout class="header">
+        <Layout className="header">
             <Row>
                 <ProfileOutlined style={{backgroundColor: '#EEE0CB'}}/>
                 {buttonToggle()}

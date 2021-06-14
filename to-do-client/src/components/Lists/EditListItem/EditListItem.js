@@ -26,11 +26,8 @@ const EditListItem = (props) => {
 
         </div>
     )
-        
-
 
 }
-
 
 
 export default EditListItem;
