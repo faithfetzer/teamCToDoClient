@@ -5,7 +5,6 @@ import Header from './site/Header'
 import Display from './site/Display'
 import Auth from './components/Auth/Auth'
 import {Layout} from 'antd'
-import Auth from './components/Auth/Auth'
 import EditListItem from './components/Lists/EditListItem/EditListItem';
 
 
@@ -17,20 +16,6 @@ const App = (props) => {
   const [lists, setLists] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
   const [listToUpdate, setListToUpdate] = useState([]);
-
-//   const title = () => {
-//     return login ? 'Login' : 'Signup';
-// }
-
-// const loginToggle = (e) => {
-//     e.preventDefault();
-//     setLogin(!login);
-//     setEmail('');
-//     setPassword('');
-//     setFirstName('');
-//     setLastName('');
-
-// }
 
 
     useEffect(() => {

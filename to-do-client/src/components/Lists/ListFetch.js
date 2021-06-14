@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
-import {Table} from 'antd';
-
+import {Table, Badge} from 'antd';
 
 const List = props => {
     console.log(props);
