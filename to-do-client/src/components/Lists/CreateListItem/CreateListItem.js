@@ -12,7 +12,7 @@ const listItemCreate = (props) => {
         e.preventDefault();
         fetch('http://localhost:3000/list/create', {
             method: 'POST',
-            body: JSON.stringify({log: {list: list, date: date, due: due, description: description, duration: duration, completed: completed}}),
+            body: JSON.stringify({log: {list: list, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token

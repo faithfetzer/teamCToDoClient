@@ -4,7 +4,7 @@ import {Table, Badge} from 'antd';
 
 const List = props => {
     console.log(props);
-    const [ List, setList ] = useState([]);
+    const [ list, setList ] = useState([]);
     
 
     const fetchList = () => {
@@ -44,7 +44,7 @@ const List = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    <DisplayList/>
+                    <DisplayList list = {list}/>
                 </tbody>
             </table>
         </>
