@@ -1,4 +1,5 @@
 import React from "react";
+import {Table} from 'reactstrap';
 import EditListItem from '../EditListItem/EditListItem';
 
 
@@ -16,28 +17,49 @@ const DisplayList = (props) => {
         .then(() => props.fetchList())
     }
 
+    const listMapper = () => {
+
+        return props.list.map((list, index) => {
+            return(
+                <tr key={index}>
+                    <th scope="row">{list.id}</th>
+                    <td>{list.name}</td>
+                    <td>{list.date}</td>
+                    <td>{list.timedue}</td>
+                    <td>{list.description}</td>
+                     <td>{list.duration}</td>
+                     <td>{list.completed}</td>
+                     <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
+                     <td>{list.important}</td>
+                </tr>
+            )
+        })
+
+    }
+
+
+
     return(
         <>
+        <h1>Your ToDo List</h1>
+        <Table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>date</th>
+                    <th>time due</th>
+                    <th>description</th>
+                    <th>duration</th>
+                    <th>completed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {listMapper()}
+            </tbody>
+        </Table>
+              
             <EditListItem sessionToken={props.sessionToken} list={props.list}/>
-            {/* {
-                props.list.map((list,key) => { */}
-            {/* {
-                props.list.map((list,key) => {
-                    return(
-                        <tr key={key}>
-                            <td>{list.name}</td>
-                            <td>{list.date}</td>
-                            <td>{list.timedue}</td>
-                            <td>{list.description}</td>
-                            <td>{list.duration}</td>
-                            <td>{list.completed}</td>
-                            <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
-                            <td>{list.important}</td>
-                        </tr>
-                    )
-                })
-            } */}
-            </>
+           </>
     )
 }
 

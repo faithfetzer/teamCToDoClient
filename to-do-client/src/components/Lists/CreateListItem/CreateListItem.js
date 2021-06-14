@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 
 const listItemCreate = (props) => {
-    const [list, setList] = useState('');
+    const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [due, setDue] = useState('');
     const [description, setDescription] = useState('');
@@ -12,7 +12,7 @@ const listItemCreate = (props) => {
         e.preventDefault();
         fetch('http://localhost:3000/list/create', {
             method: 'POST',
-            body: JSON.stringify({log: {list: list, date: date, due: due, description: description, duration: duration}}),
+            body: JSON.stringify({log: {name: name, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
@@ -20,7 +20,7 @@ const listItemCreate = (props) => {
         }) .then((res) => res.json())
         .then((logData) => {
             console.log(logData);
-            setList('');
+            setName('');
             setDate('');
             setDue('');
             setDescription('');
@@ -31,12 +31,12 @@ const listItemCreate = (props) => {
 
     return(
         <form onSubmit={handleSubmit}>
-            <input type='text' value={list} placeholder='ToDo Item'onChange={(e) => setList(e.target.value)}/>
+            <input type='text' value={name} placeholder='ToDo Item'onChange={(e) => setList(e.target.value)}/>
             <input type='text' value={date} placeholder='Due Date'onChange={(e) => setDate(e.target.value)}/>
-            <input type='text' value={Due} placeholder='Due Time'onChange={(e) => setdue(e.target.value)}/>
+            <input type='text' value={due} placeholder='Due Time'onChange={(e) => setdue(e.target.value)}/>
             <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
             <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
-            <button type='submit'>Create Your Pie!</button>
+            <button type='submit'>Create Your List!</button>
         </form>
     )
 
