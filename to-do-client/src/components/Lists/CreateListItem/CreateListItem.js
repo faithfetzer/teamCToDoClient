@@ -1,33 +1,48 @@
-// import React, {useState} from 'react';
+import React, {useState} from 'react';
 
-// ! STILL WORKING dont uncomment please
 
-// const listEditor = (props) => {
-//     const [editList, setEditList] = useState(props.listUpdate.name);
-//     const [editDate, setEditDate] = useState(props.listUpdate.date);
-//     const [editDue, setEditDue] = useState(props.listUpdate.timedue);
-//     const [editDes, setEditDes] = useState(props.listUpdate.description);
-//     const [editDur, setEditDur] = useState(props.listUpdate.duration);
-//     const [editComp, setEditComp] = useState(props.listUpdate.completed);
-//     const listUpdate = (event, list) => {
-//         event.preventDefault();
-//         fetch(`http://localhost:3000/list/${props.listUpdate.id}`, {
-//             method: 'POST',
-//             body: JSON.stringify({log: {name :editList,
-//                 date : editDate,
-//                 timedue: editDue,
-//                 description: editDes,
-//                 duration: editDur,
-//                 completed: editComp,
-//                 important: false}}),
-//             headers: new Headers({
-//                 'Content-Type': 'application/json',
-//                 'Authorization': props.token
-//             })
-//         }) .then((res) => {
-//             props.fetchList();
-//             props.updateOff();
-//         })
-//     }}
+
+const listItemCreate = (props) => {
+    const [list, setList] = useState('');
+    const [date, setDate] = useState('');
+    const [due, setDue] = useState('');
+    const [description, setDescription] = useState('');
+    const [duration, setDuration] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:3000/list/create', {
+            method: 'POST',
+            body: JSON.stringify({log: {list: list, date: date, due: due, description: description, duration: duration, completed: completed}}),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        }) .then((res) => res.json())
+        .then((logData) => {
+            console.log(logData);
+            setList('');
+            setDate('');
+            setDue('');
+            setDescription('');
+            setDuration('');
+            props.fetchList();
+        })
+    }
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <input type='text' value={list} placeholder='ToDo Item'onChange={(e) => setList(e.target.value)}/>
+            <input type='text' value={date} placeholder='Due Date'onChange={(e) => setDate(e.target.value)}/>
+            <input type='text' value={Due} placeholder='Due Time'onChange={(e) => setdue(e.target.value)}/>
+            <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
+            <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
+            <button type='submit'>Create Your Pie!</button>
+        </form>
+    )
+
+}
+
+export default listItemCreate;
+
 // goes to /list/create endpoint
 

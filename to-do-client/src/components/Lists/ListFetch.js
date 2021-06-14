@@ -9,7 +9,7 @@ const List = props => {
     
 
     const fetchList = () => {
-        let url = 'http://localhost:4000/';
+        let url = 'http://localhost:4000/list/id';
 
         fetch(url, {
             method: 'GET',
