@@ -27,10 +27,10 @@ const DisplayList = (props) => {
                     <td>{list.date}</td>
                     <td>{list.timedue}</td>
                     <td>{list.description}</td>
-                     <td>{list.duration}</td>
-                     <td>{list.completed}</td>
-                     <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
-                     <td>{list.important}</td>
+                    <td>{list.duration}</td>
+                    <td>{list.completed}</td>
+                    {/* <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td> */}
+                    <td>{list.important}</td>
                 </tr>
             )
         })
@@ -41,25 +41,24 @@ const DisplayList = (props) => {
 
     return(
         <>
-        <h1>Your ToDo List</h1>
-        <Table>
-            <thead>
-                <tr>
-                    <th>name</th>
-                    <th>date</th>
-                    <th>time due</th>
-                    <th>description</th>
-                    <th>duration</th>
-                    <th>completed</th>
-                </tr>
-            </thead>
-            <tbody>
-                {listMapper()}
-            </tbody>
-        </Table>
-              
+            <h1>Your ToDo List</h1>
+            <Table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>date</th>
+                        <th>time due</th>
+                        <th>description</th>
+                        <th>duration</th>
+                        <th>completed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listMapper()}
+                </tbody>
+            </Table>
             <EditListItem sessionToken={props.sessionToken} list={props.list}/>
-           </>
+        </>
     )
 }
 

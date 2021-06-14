@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 
 const EditListItem = (props) => {
     console.log(props)
-    const [editName, setEditName] = useState(props.listToEdit.name);
-    const [editDate, setEditDate] = useState(props.listToEdit.date);
-    const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
-    const [editDescription, setEditDescription] = useState(props.listToEdit.description);
-    const [editDuration, setEditDuration] = useState(props.listToEdit.duration);
+    // const [editName, setEditName] = useState(props.listToEdit.name);
+    // const [editDate, setEditDate] = useState(props.listToEdit.date);
+    // const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
+    // const [editDescription, setEditDescription] = useState(props.listToEdit.description);
+    // const [editDuration, setEditDuration] = useState(props.listToEdit.duration);
 
 
     return (
