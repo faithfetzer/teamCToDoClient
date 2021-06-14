@@ -5,8 +5,20 @@ primary font:
 font-family: 'Kodchasan', sans-serif;
 welcome page title font:
 font-family: 'Montserrat Alternates', sans-serif; 
+
+EEE0CB - champagne  BAA898 - grullo  C5351B - rosso corsa  004643 - warm black  333847 - charcoal  0081AF - cg blue
+
 */
 
-.welcome-page {
-  font-family: 'Montserrat Alternates', sans-serif; 
+.layout {
+  font-family: 'Kodchasan', sans-serif;
+}
+
+.layout{
+  background-color: #EEE0CB;
+  background-size: 100% 100%;
+}
+
+.header{
+  background-color: #BAA898;
 }
