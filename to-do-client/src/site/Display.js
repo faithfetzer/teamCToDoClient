@@ -18,7 +18,6 @@ const Display = (props) => {
     const displayView = () => {
         if(props.loginStatus === 'login' || props.loginStatus === 'signup'){
             return(
-                // need to separate out toggle for login/signup fields
                 <Auth updateLocalStorage={props.updateLocalStorage} clearLocalStorage={props.clearLocalStorage} sessionToken={props.sessionToken} loginStatus={props.loginStatus} setLoginStatus={props.setLoginStatus}/>
             )
         } else if(props.loginStatus === 'signedIn'){
