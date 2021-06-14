@@ -11,8 +11,17 @@ const EditListItem = (props) => {
 
 
     return (
-        //add some sort of pop up here}
+        //add some sort of pop up here
         <div>
+            <div className='header'>
+                Edit To-Do List
+            </div>
+            <div className='body'>
+                table with all params w/ input fields 
+            </div>
+            <div className='footer'>
+                Save edit button
+            </div>
 
         </div>
     )
