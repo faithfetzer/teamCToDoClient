@@ -5,8 +5,8 @@ import React from 'react';
 const Footer = () => {
 
     return(
-        <div>
-            Footer
+        <div style={{backgroundColor: '#BAA898', textAlign: 'center'}}>
+            &copy; Faith Fetzer, Hope Acuna, Jessica Washington, Rodney Gaines 
         </div>
     )
 }

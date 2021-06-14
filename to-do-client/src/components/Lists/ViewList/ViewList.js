@@ -17,8 +17,11 @@ const DisplayList = (props) => {
 
     return(
         <>
+
             {
                 props.list.map((list,key) => {
+            {/* {
+                props.pie.map((list,key) => {
                     return(
                         <tr key={key}>
                             <td>{list.name}</td>
@@ -28,11 +31,11 @@ const DisplayList = (props) => {
                             <td>{list.duration}</td>
                             <td>{list.completed}</td>
                             <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
-
+                            <td>{list.important}</td>
                         </tr>
                     )
                 })
-            }
+            } */}
         </>
     )
 }
