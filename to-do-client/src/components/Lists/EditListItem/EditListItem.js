@@ -6,24 +6,24 @@ import APIURL from '../../../helpers/environment';
 
 const EditListItem = (props) => {
     console.log(props)
-    // const [editName, setEditName] = useState(props.listToEdit.name);
-    // const [editDate, setEditDate] = useState(props.listToEdit.date);
-    // const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
-    // const [editDescription, setEditDescription] = useState(props.listToEdit.description);
-    // const [editDuration, setEditDuration] = useState(props.listToEdit.duration);
+    const [editName, setEditName] = useState(props.listToEdit.name);
+    const [editDate, setEditDate] = useState(props.listToEdit.date);
+    const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
+    const [editDescription, setEditDescription] = useState(props.listToEdit.description);
+    const [editDuration, setEditDuration] = useState(props.listToEdit.duration);
     const listUpdate = (event, list) => {
         event.preventDefault();
-        fetch(`${APIURL}/list/update`, {
+        fetch(`${APIURL}/list/${props.listToEdit.id}`, {
             method: 'PUT',
-            body: JSON.stringify({list: {name: name, date: date, due: due, description: description, duration: duration, complete: complete}}),
+            body: JSON.stringify({list: {name: setEditName, date: setEditDate, due: setEditTimeDue, description: setEditDescription, duration: setEditDuration}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token
             })
         }) .then((res => {
-            props.fetchWorkouts();
+            props.fetchLists();
             props.updateOff();
-        })
+        }))
     }
 
 
