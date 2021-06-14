@@ -8,12 +8,8 @@ import ListFetch from '../components/Lists/ListFetch';
 import Welcome from '../components/Welcome/Welcome';
 
 const Display = (props) => {
-    console.log(props);
-    console.log(props.loginStatus)
-
-    useEffect(() => {
-        displayView()
-    }, [props.loginStatus]);
+    // console.log(props);
+    // console.log(props.loginStatus)
 
     const displayView = () => {
         if(props.loginStatus === 'login' || props.loginStatus === 'signup'){
@@ -30,6 +26,10 @@ const Display = (props) => {
             )
         }
     }
+
+    useEffect(() => {
+            displayView()
+        }, [props.loginStatus]);
 
     return (
         <div>
