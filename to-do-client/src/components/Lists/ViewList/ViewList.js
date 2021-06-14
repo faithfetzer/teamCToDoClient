@@ -1,5 +1,6 @@
 import React from "react";
 import {Table} from 'reactstrap';
+import EditListItem from '../EditListItem/EditListItem';
 
 
 const DisplayList = (props) => {
@@ -56,7 +57,9 @@ const DisplayList = (props) => {
                 {listMapper()}
             </tbody>
         </Table>
-              </>
+              
+            <EditListItem sessionToken={props.sessionToken} list={props.list}/>
+           </>
     )
 }
 

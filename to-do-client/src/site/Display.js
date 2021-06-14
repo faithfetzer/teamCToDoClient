@@ -22,7 +22,7 @@ const Display = (props) => {
             )
         } else if(props.loginStatus === 'signedIn'){
             return(
-                <ListFetch/>
+                <ListFetch sessionToken={props.sessionToken}/>
             )
         } else {
             return(

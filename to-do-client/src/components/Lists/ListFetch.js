@@ -23,7 +23,7 @@ const List = props => {
 
     useEffect(() => {
         fetchList();
-    })
+    }, [list])
 
 
 
@@ -44,7 +44,7 @@ const List = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    <DisplayList list = {list}/>
+                    <DisplayList list={list} sessionToken={props.sessionToken}/>
                 </tbody>
             </table>
         </>
