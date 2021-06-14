@@ -4,6 +4,7 @@ import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
 import Auth from './components/Auth/Auth'
+import {Layout} from 'antd'
 
 const App = (props) => {
 
@@ -43,11 +44,11 @@ const App = (props) => {
     };
 
   return (
-    <div className="App">
-      <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-      <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-      <Footer/>
-    </div>
+      <Layout className="layout">
+          <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+          <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+          <Footer/>
+      </Layout>
   );
 }
 
