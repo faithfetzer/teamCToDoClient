@@ -18,8 +18,8 @@ const DisplayList = (props) => {
     return(
         <>
 
-            {
-                props.list.map((list,key) => {
+            {/* {
+                props.list.map((list,key) => { */}
             {/* {
                 props.pie.map((list,key) => {
                     return(
@@ -40,7 +40,7 @@ const DisplayList = (props) => {
                     )
                 })
             } */}
-        </>
+              </>
     )
 }
 
