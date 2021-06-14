@@ -6,7 +6,7 @@ import EditListItem from '../EditListItem/EditListItem';
 const DisplayList = (props) => {
     console.log(props);
 
-    const deleteListItem = (listItem) => {
+    const deleteListItem = (props) => {
         fetch(`http://localhost:3000/list/${props.list.id}`, {
             method: 'DELETE',
             headers: new Headers({
@@ -29,7 +29,7 @@ const DisplayList = (props) => {
                     <td>{list.description}</td>
                      <td>{list.duration}</td>
                      <td>{list.completed}</td>
-                     <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
+                     <td><button  onClick={() => {deleteListItem(props)}}>Delete</button></td>
                      <td>{list.important}</td>
                 </tr>
             )
@@ -57,9 +57,9 @@ const DisplayList = (props) => {
                 {listMapper()}
             </tbody>
         </Table>
-              
-            <EditListItem sessionToken={props.sessionToken} list={props.list}/>
-           </>
+
+        <EditListItem sessionToken={props.sessionToken} list={props.list}/>
+              </>
     )
 }
 
