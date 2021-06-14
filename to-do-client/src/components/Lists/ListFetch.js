@@ -20,15 +20,12 @@ const List = props => {
         })
         .then(res => res.json())
         .then(json => setList(json))
-        .then(console.log('list', list))
+        // .then(console.log('list', list))
     } 
 
     useEffect(() => {
-        console.log('fetch list')
-        fetchList();
-    }, [list])
-
-
+        fetchList()
+    }, [list]);
 
 
     return (
@@ -36,8 +33,6 @@ const List = props => {
             <DisplayList list={list} sessionToken={props.sessionToken}/>
         </>
     )
-
-
 
 }
 

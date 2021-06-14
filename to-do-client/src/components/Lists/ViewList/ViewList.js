@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}from "react";
 import {Table} from 'reactstrap';
 import EditListItem from '../EditListItem/EditListItem';
 import APIURL from '../../../helpers/environment';
@@ -6,8 +6,9 @@ import APIURL from '../../../helpers/environment';
 
 const DisplayList = (props) => {
     // console.log(props);
+    const [editItem, setEditItem] = useState(false);
 
-    const deleteListItem = (props) => {
+    const deleteListItem = () => {
         fetch(`${APIURL}/list/${props.list.id}`, {
             method: 'DELETE',
             headers: new Headers({
@@ -17,6 +18,8 @@ const DisplayList = (props) => {
         }) 
         .then(() => props.fetchList())
     }
+
+    // const buttonText = editItem ? <EditListItem list={props.list} itemId={props.list.id} setEditItem={setEditItem}/>: 'Edit'
 
     const listMapper = () => {
 
@@ -32,7 +35,8 @@ const DisplayList = (props) => {
                     <td>{list.completed}</td>
                     <td>{list.important}</td>
                     <td><button>Edit</button></td>
-                    <td><button  onClick={() => {deleteListItem(props)}}>Delete</button></td>
+                    {/* <td><button onClick={setEditItem(true)}>{buttonText}</button></td> */}
+                    <td><button  onClick={() => {deleteListItem()}}>Delete</button></td>
                     
                 </tr>
             )
@@ -64,7 +68,7 @@ const DisplayList = (props) => {
             </tbody>
         </Table>
 
-        <EditListItem sessionToken={props.sessionToken} list={props.list}/>
+        {/* <EditListItem sessionToken={props.sessionToken} list={props.list}/> */}
         </>
     )
 }
