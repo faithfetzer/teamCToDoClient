@@ -1,6 +1,5 @@
 import React from 'react';
-import { Col } from 'antd';
-import WelcomePic from '../../assets/Welcome2.png'
+import { Row, Col} from 'antd';
 import './Welcome.css';
 
 const Welcome = (props) => {
@@ -10,14 +9,11 @@ const Welcome = (props) => {
 
     return(
         <div className="welcomePage">
-            <div className="welcomeImage">
+            {/* <div className="welcomeImage">
                 <img id="background-image" src={WelcomePic} alt="background circles" style={{width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center'}}/>
-            </div>
-            <div className="welcome">
-            <Col><h1>Welcome</h1></Col>
-            <Col><h5><a href='#' onClick={loginButton}>Login</a> or <a href='#' onClick={signupButton}>Sign Up</a> to get started</h5>
-                </Col>
-            </div>
+            </div> */}
+            <Col span={12} offset={12}><h1>Welcome</h1></Col>
+            <Col><h5 span={12} offset={12}><b className="bold" onClick={loginButton}>Login</b> or <b className="bold" onClick={signupButton}>Sign Up</b> to get started</h5></Col>
         </div>
     )
 }

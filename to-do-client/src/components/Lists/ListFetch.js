@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
+import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
+import ViewCompleted from './ViewImportant/ViewImportant'
+import ViewImportant from './ViewImportant/ViewImportant';
 // import {Table, Badge} from 'antd';
 
 const List = props => {
     // console.log(props);
     const [ list, setList ] = useState([]);
-    
+    const [ completed, setCompleted] = useState(false);
+    const [ create, setCreate] = useState(false);
+    const [ important, setImportant] = useState(false);
 
     const fetchList = () => {
         let url = `${APIURL}/list/`;
-
+        console.log(url)
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -24,13 +29,36 @@ const List = props => {
     } 
 
     useEffect(() => {
+        console.log('fetch list')
         fetchList()
-    }, [list]);
+    }, [setList]);
 
-
+    const displayReturn = () =>{
+        if(create){
+            console.log('create')
+            return(
+            <ListItemCreate create={create} setCreate={setCreate}/>)
+        } else if(important){
+            console.log('important')
+            return(
+            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
+        } else if(completed){
+            console.log('completed')
+            return(
+            <div completed={completed} setCompleted={setCompleted}>Completed View</div>)
+        } else
+        return(
+        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
+    }
     return (
-        <>
-            <DisplayList list={list} sessionToken={props.sessionToken}/>
+        <> 
+            <button onClick={() => {setCreate(true)}}>Create Item</button>
+            <button onClick={() => {setCompleted(true)}}>View Completed Items</button>
+            <button onClick={() => {setImportant(true)}}>View Important</button>
+            {/* Need to make it so that when in view improtant/view completed, buttons say "view all"/"view to do list" */}
+            {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
+            {displayReturn()}
+
         </>
     )
 
