@@ -22,7 +22,7 @@ const App = (props) => {
         if (localStorage.getItem("token")) {
             setSessionToken(localStorage.getItem("token"));
         }
-    }, [sessionToken]);
+    }, []);
 
     const updateLocalStorage = (newToken) => {
         localStorage.setItem("token", newToken);
