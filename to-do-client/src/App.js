@@ -3,8 +3,11 @@ import React, {useState, useEffect} from 'react';
 import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
+import Auth from './components/Auth/Auth'
+import {Layout} from 'antd'
 //import Auth from './components/Auth/Auth'
 import EditListItem from './components/Lists/EditListItem/EditListItem';
+
 
 const App = (props) => {
 
@@ -44,12 +47,12 @@ const App = (props) => {
     };
 
   return (
-    <div className="App">
-      <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-      <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-      <Footer/>
-      <EditListItem />
-    </div>
+      <Layout className="layout">
+          <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+          <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+          <Footer/>
+          <EditListItem />
+      </Layout>
   );
 }
 
