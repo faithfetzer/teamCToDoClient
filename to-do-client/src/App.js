@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
-//import Auth from './components/Auth/Auth'
+import Auth from './components/Auth/Auth'
 import EditListItem from './components/Lists/EditListItem/EditListItem';
 
 const App = (props) => {
@@ -11,6 +11,9 @@ const App = (props) => {
   // console.log(props);
   const [sessionToken, setSessionToken] = useState(undefined);
   const [loginStatus, setLoginStatus] = useState(undefined);
+  const [lists, setLists] = useState([]);
+  const [updateActive, setUpdateActive] = useState(false);
+  const [listToUpdate, setListToUpdate] = useState([]);
 
 //   const title = () => {
 //     return login ? 'Login' : 'Signup';
@@ -42,6 +45,21 @@ const App = (props) => {
         localStorage.clear();
         setSessionToken(undefined);
     };
+
+    const editUpdateList = (list) => {
+      setListToUpdate(list);
+      console.log(list);
+    }
+
+    const updateOn = () => {
+      setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+      setUpdateActive(false);
+    }
+
+
 
   return (
     <div className="App">

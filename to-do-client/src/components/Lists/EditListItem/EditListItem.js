@@ -1,39 +1,27 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 
-function EditListItem () {
-    return(
+
+const EditListItem = (props) => {
+    const [editName, setEditName] = useState(props.listToEdit.name);
+    const [editDate, setEditDate] = useState(props.listToEdit.date);
+    const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
+    const [editDescription, setEditDescription] = useState(props.listToEdit.description);
+    const [editDuration, setEditDuration] = useState(props.listToEdit.duration);
+
+
+    return (
+        //add some sort of pop up here}
         <div>
-        Hello World
-    </div>
+
+        </div>
     )
-    
+        
+
+
 }
 
 
-// function editListItem() {
-//     const [edit, setEdit] = useState({
-//         id: null,
-//         value: ''
-//     })
-
-
-//     return list.map((list, index) => {
-//         <div className={list.isComplete ? 'list-row complete' : 'list-row'} 
-//         key={index}>
-
-//             <div key={list.id} onClick={() => completeList(list.id)}>
-//                 {list.text}
-//             </div>
-
-
-
-
-//         </div>
-//     })
-
-
-// }
 
 export default EditListItem;
 // goes to /list/update endpoint
