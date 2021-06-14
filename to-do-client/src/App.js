@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
-import Auth from './components/Auth/Auth'
+
 import {Layout} from 'antd'
 import EditListItem from './components/Lists/EditListItem/EditListItem';
 
