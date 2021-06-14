@@ -2,26 +2,31 @@
 import React, { useState } from 'react';
 import APIURL from '../../helpers/environment';
 import './Auth.css';
+import {  Form, Input, Select, Button} from 'antd';
 
+// need to separate out login/signup fields, leaving auth with toggle for now- FF
 const Auth = (props) => {
+    console.log(props)
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(true);
     
-    const title = () => {
-        return login ? 'Login' : 'Signup';
+    const title = () => props.loginStatus == 'login' ? 'Login' : "Sign Up For a New Account"
+
+    const signedIn = () =>{
+        props.setLoginStatus('signedIn');
     }
 
-    const loginToggle = (e) => {
-        e.preventDefault();
-        setLogin(!login);
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
-    }
+    // const loginToggle = (e) => {
+    //     e.preventDefault();
+    //     setLogin(!login);
+    //     setEmail('');
+    //     setPassword('');
+    //     setFirstName('');
+    //     setLastName('');
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -51,39 +56,38 @@ const Auth = (props) => {
     })
     .then(res => res.json())
     .then(json => props.updateLocalStorage(json.token))
+    .then(signedIn())
     .catch(err => console.log(err));
     }
     
-    const signupFields = () => !login ?
+    const signupFields = () => props.loginStatus !== 'login' ?
     (
         <div>
             <label htmlFor='firstName'>First Name</label>
             <br />
-            <input type = "text" id="firstName" calue={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <Input type = "text" id="firstName" calue={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <br />
             <label htmlFor='lastName'>Last Name</label>
             <br />
-            <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <Input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </div>
     ) : null;
     return(
-        <div>
-            <form>
+            <Form className="login-signup">
                 <h1>{title()}</h1>
                 {signupFields()}
                 <label htmlFor="email">Email:</label>
                 <br />
-                <input type="text" id='email' value={email} onChange={(e) =>setEmail(e.target.value)} />
+                <Input type="text" id='email' value={email} onChange={(e) =>setEmail(e.target.value)} />
                 <br />
                 <label htmlFor="password">Password</label>
                 <br />
-                <input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
-                <button onClick={loginToggle}>Login/Signup Toggle</button>
+                {/* <button onClick={loginToggle}>Login/Signup Toggle</button> */}
                 <br />
-                <button type ="submit" onClick={handleSubmit}>Submit</button>
-            </form>
-        </div>
+                <Button type ="submit" onClick={handleSubmit}>Submit</Button>
+            </Form>
     )
 }
 
