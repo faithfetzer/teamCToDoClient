@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import APIURL from '../../helpers/environment';
 import './Auth.css';
+import {  Form, Input, Select, Button} from 'antd';
 
 // need to separate out login/signup fields, leaving auth with toggle for now- FF
 const Auth = (props) => {
@@ -64,31 +65,29 @@ const Auth = (props) => {
         <div>
             <label htmlFor='firstName'>First Name</label>
             <br />
-            <input type = "text" id="firstName" calue={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <Input type = "text" id="firstName" calue={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <br />
             <label htmlFor='lastName'>Last Name</label>
             <br />
-            <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <Input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </div>
     ) : null;
     return(
-        <div>
-            <form>
+            <Form className="login-signup">
                 <h1>{title()}</h1>
                 {signupFields()}
                 <label htmlFor="email">Email:</label>
                 <br />
-                <input type="text" id='email' value={email} onChange={(e) =>setEmail(e.target.value)} />
+                <Input type="text" id='email' value={email} onChange={(e) =>setEmail(e.target.value)} />
                 <br />
                 <label htmlFor="password">Password</label>
                 <br />
-                <input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
                 {/* <button onClick={loginToggle}>Login/Signup Toggle</button> */}
                 <br />
-                <button type ="submit" onClick={handleSubmit}>Submit</button>
-            </form>
-        </div>
+                <Button type ="submit" onClick={handleSubmit}>Submit</Button>
+            </Form>
     )
 }
 

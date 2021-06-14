@@ -27,7 +27,7 @@ const Display = (props) => {
             )
         } else {
             return(
-                <Welcome/>
+                <Welcome loginStatus={props.loginStatus} setLoginStatus={props.setLoginStatus}/>
             )
         }
     }
@@ -35,8 +35,6 @@ const Display = (props) => {
     return (
         <div>
             {displayView()}
-            {/* <ListFetch /> */}
-            {/* put the above line so we can see the list being displayed while working on getting the displayView function working */}
         </div>
     );
 };

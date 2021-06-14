@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
+import {Table} from 'antd';
 
 
 const List = props => {
