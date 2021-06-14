@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
+import APIURL from '../../helpers/environment';
 // import {Table, Badge} from 'antd';
 
 const List = props => {
-    console.log(props);
+    // console.log(props);
     const [ list, setList ] = useState([]);
     
 
     const fetchList = () => {
-        let url = 'http://localhost:4000/list/id';
+        let url = `${APIURL}/list/`;
 
         fetch(url, {
             method: 'GET',
@@ -19,9 +20,11 @@ const List = props => {
         })
         .then(res => res.json())
         .then(json => setList(json))
+        .then(console.log('list', list))
     } 
 
     useEffect(() => {
+        console.log('fetch list')
         fetchList();
     }, [list])
 
@@ -30,23 +33,7 @@ const List = props => {
 
     return (
         <>
-        
-    
-            <table>
-                <thead>
-                    <tr>
-                        <th>List</th>
-                        <th>Date</th>
-                        <th>Due by</th>
-                        <th>Description</th>
-                        <th>Duration</th>
-                        <th>Complete?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <DisplayList list={list} sessionToken={props.sessionToken}/>
-                </tbody>
-            </table>
+            <DisplayList list={list} sessionToken={props.sessionToken}/>
         </>
     )
 

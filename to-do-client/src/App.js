@@ -22,7 +22,7 @@ const App = (props) => {
         if (localStorage.getItem("token")) {
             setSessionToken(localStorage.getItem("token"));
         }
-    }, []);
+    }, [sessionToken]);
 
     const updateLocalStorage = (newToken) => {
         localStorage.setItem("token", newToken);
@@ -54,7 +54,6 @@ const App = (props) => {
           <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
           <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
           <Footer/>
-          <EditListItem />
       </Layout>
   );
 }
