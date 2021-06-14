@@ -31,7 +31,10 @@ const DisplayList = (props) => {
                             <td>{list.duration}</td>
                             <td>{list.completed}</td>
                             <td><button  onClick={() => {deleteListItem(listItem)}}>Delete</button></td>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 53050c1a6a39d5c8b4d8f3b59d93282f3bc9b1e6
                             <td>{list.important}</td>
                         </tr>
                     )
