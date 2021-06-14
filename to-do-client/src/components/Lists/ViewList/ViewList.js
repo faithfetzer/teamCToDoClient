@@ -1,4 +1,5 @@
 import React from "react";
+import EditListItem from '../EditListItem/EditListItem';
 
 
 const DisplayList = (props) => {
@@ -17,7 +18,7 @@ const DisplayList = (props) => {
 
     return(
         <>
-
+            <EditListItem sessionToken={props.sessionToken} list={props.list}/>
             {/* {
                 props.list.map((list,key) => { */}
             {/* {
@@ -36,7 +37,7 @@ const DisplayList = (props) => {
                     )
                 })
             } */}
-              </>
+            </>
     )
 }
 

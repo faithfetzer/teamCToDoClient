@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 
 const EditListItem = (props) => {
+    console.log(props)
     const [editName, setEditName] = useState(props.listToEdit.name);
     const [editDate, setEditDate] = useState(props.listToEdit.date);
     const [editTimeDue, setEditTimeDue] = useState(props.listToEdit.timeDue);
