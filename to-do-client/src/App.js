@@ -52,7 +52,7 @@ const App = (props) => {
   return (
       <Layout className="layout">
           <Header clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-          <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
+          <Display className="welcome-page" clearLocalStorage={clearLocalStorage} updateLocalStorage={updateLocalStorage}  setSessionToken={setSessionToken} sessionToken={sessionToken} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
           <Footer/>
       </Layout>
   );

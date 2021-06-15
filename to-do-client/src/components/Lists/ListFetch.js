@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
 import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
-import ViewCompleted from './ViewImportant/ViewImportant'
+import ViewCompleted from './ViewCompleted/ViewCompleted'
 import ViewImportant from './ViewImportant/ViewImportant'; 
+import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import {Button} from 'antd';
 import './ListFetch.css'
+import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);
@@ -13,6 +15,7 @@ const List = props => {
     const [ completed, setCompleted] = useState(false);
     const [ create, setCreate] = useState(false);
     const [ important, setImportant] = useState(false);
+    const [deleteStatus, setDeleteStatus] =useState(false);
 
     const fetchList = () => {
         let url = `${APIURL}/list/`;
@@ -44,12 +47,22 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
+             console.log('completed')
+            return(
+
+            <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)
+        
+
+            
+        } else if(deleteStatus){
             // console.log('completed')
             return(
-            <div completed={completed} setCompleted={setCompleted}>Completed View</div>)
-        } else
+            <DeleteUser deleteStatus={deleteStatus} setDeleteStatus={setDeleteStatus} sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>)
+        } else{
+
         return(
         <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
+    }
     }
 
     const createButton = () =>{
@@ -59,7 +72,7 @@ const List = props => {
             )
         } else {
             return(
-                <Button onClick={() => {setCreate(true); setImportant(false); setCompleted(false);}}>Create Item</Button>
+                <Button onClick={() => {setCreate(true); setImportant(false); setCompleted(false); setDeleteStatus(false)}}>Create Item</Button>
             )
         }
     }
@@ -70,7 +83,7 @@ const List = props => {
             )
         } else {
             return(
-                <Button onClick={() => {setCompleted(true); setCreate(false); setImportant(false)}}>View Completed Items</Button>
+                <Button onClick={() => {setCompleted(true); setCreate(false); setImportant(false); setDeleteStatus(false)}}>View Completed Items</Button>
             )
         }
     }
@@ -82,16 +95,31 @@ const List = props => {
             )
         } else {
             return(
-                <Button onClick={() => {setImportant(true); setCompleted(false); setCreate(false);}}>View Important</Button>
+                <Button onClick={() => {setImportant(true); setCompleted(false); setCreate(false); setDeleteStatus(false)}}>View Important</Button>
             )
         }
     }
-    return (
 
+
+    const deleteUserButton = () =>{
+        if(deleteStatus ===false){
+            console.log('delete')
+            return(
+            <Button id="delete" onClick={() => {setDeleteStatus(true); setImportant(false); setCompleted(false); setCreate(false);}}>Delete User Account</Button>
+            )
+        } else {
+            return(
+            <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
+            )
+        }
+    }
+
+    return (
         <>
-            <button>
+            {/* <button>
             <DisplayList list={list} sessionToken={props.sessionToken}/>
-            </button>
+        
+            </button> */}
         
 
         <div className="listFetch"> 
@@ -102,11 +130,12 @@ const List = props => {
             {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
             {displayReturn()}
             
-            <Button id="delete">Delete User Account</Button>
+            {deleteUserButton()}
         </div>
         </>
     )
 
 }
+
 
 export default List;

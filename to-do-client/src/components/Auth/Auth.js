@@ -13,7 +13,7 @@ const Auth = (props) => {
     const [password, setPassword] = useState('');
     // const [login, setLogin] = useState(true);
     
-    const title = () => props.loginStatus == 'login' ? 'Login' : "Sign Up For a New Account"
+    const title = () => props.loginStatus === 'login' ? 'Login' : "Sign Up For a New Account"
 
     const signedIn = () =>{
         props.setLoginStatus('signedIn');
@@ -30,7 +30,7 @@ const Auth = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let reqBody = props.loginStatus == 'login' ?
+        let reqBody = props.loginStatus === 'login' ?
         {
             email: email,
             password: password
@@ -41,7 +41,7 @@ const Auth = (props) => {
             email: email,
             password: password
         }
-        let url = props.loginStatus == 'login' ?
+        let url = props.loginStatus === 'login' ?
         `${APIURL}/user/login` :
         `${APIURL}/user/register`;
 
