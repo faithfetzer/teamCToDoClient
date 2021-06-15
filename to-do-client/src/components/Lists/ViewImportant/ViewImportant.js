@@ -6,8 +6,9 @@ import { Button, Table } from "antd";
 
 
 const ViewImportant = (props) => {
-    // console.log(props);
+    console.log(props);
     const [itemToEdit, setItemToEdit] = useState(undefined);
+    const [ importantList, setImportantList ] = useState([]);
 
 
     const viewImportant = () => {
@@ -19,7 +20,8 @@ const ViewImportant = (props) => {
             })
         }) 
         .then(res => res.json())
-        .then(json => props.setList(json))
+        .then(json => setImportantList(json))
+        .then(console.log(importantList))
     }
 
     const deleteListItem = (id) => {
@@ -30,39 +32,107 @@ const ViewImportant = (props) => {
                 'Authorization': props.sessionToken
             })
         }) 
-        .then(() => props.fetchList())
+        .then(() => props.setList([]))
     }
 
     useEffect(()=>{
+        console.log('view important')
         viewImportant()
     }, [props.setImportant]);
 
-    const listMapper = async () => {
-        await viewImportant()
-        console.log("mapper", props.list)
-        return props.list.map((list, index) => {
-            return(
-                <tr key={index}>
-                    {/* <th scope="row">{list.id}</th> */}
-                    <td>{list.name}</td>
-                    <td>{list.date}</td>
-                    <td>{list.timedue}</td>
-                    <td>{list.description}</td>
-                    <td>{list.duration}</td>
-                    <td>{list.completed}</td>
-                    <td>{list.important}</td>
-                    <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
-                    <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
+    // const listMapper = async () => {
+    //     await viewImportant()
+    //     console.log("mapper", props.list)
+    //     return props.list.map((list, index) => {
+    //         return(
+    //             <tr key={index}>
+    //                 {/* <th scope="row">{list.id}</th> */}
+    //                 <td>{list.name}</td>
+    //                 <td>{list.date}</td>
+    //                 <td>{list.timedue}</td>
+    //                 <td>{list.description}</td>
+    //                 <td>{list.duration}</td>
+    //                 <td>{list.completed}</td>
+    //                 <td>{list.important}</td>
+    //                 <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
+    //                 <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
                     
-                </tr>
-            )
-        })
+    //             </tr>
+    //         )
+    //     })
 
-    }
+    // }
+
+
+    // const columns = [
+    //     {
+    //         title: 'Item Name',
+    //         dataIndex: 'name',
+    //         key: 'name',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.name - b.name
+    //     },
+    //     {
+    //         title: 'Date Due',
+    //         dataIndex: 'date',
+    //         key: 'date',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.date - b.date
+    //     },
+    //     {
+    //         title: 'Time Due',
+    //         dataIndex: 'timedue',
+    //         key: 'time',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.time - b.time
+    //     },
+    //     {
+    //         title: 'Description',
+    //         dataIndex: 'description',
+    //         key: 'description',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.description - b.description
+    //     },
+    //     {
+    //         title: 'Duration',
+    //         dataIndex: 'duration',
+    //         key: 'duration',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.duration - b.duration
+    //     },
+    //     {
+    //         title: 'Completed?',
+    //         dataIndex: 'completed',
+    //         key: 'completed',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.completed - b.completed
+    //     },
+    //     {
+    //         title: 'Important',
+    //         dataIndex: 'important',
+    //         key: 'important',
+    //     },
+    //     {
+    //         title: null,
+    //         dataIndex: <Button onClick={() => { setItemToEdit('id') }}>Edit</Button>,
+    //         key: 'edit'
+    //     },
+    //     {
+    //         title: null,
+    //     },
+    // ];
+
+    // const data = importantList
+
+    // function onChange(sorter) {
+    //     console.log('params', sorter)
+    // }
 
     const displayReturn = () => itemToEdit? 
         <EditListItem sessionToken={props.sessionToken} setList={props.setList} itemToEdit={itemToEdit}/> : 
-        <Table>
+        // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
+
+        <table>
             <thead>
                 <tr>
                     <th>name</th>
@@ -77,14 +147,14 @@ const ViewImportant = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {listMapper()}
+                {/* {listMapper()} */}
             </tbody>
-        </Table>
+        </table>
 
     return(
         <>
         <h1>Important Items</h1>
-        {/* {displayReturn()} */}
+        {displayReturn()}
         {/* <Table>
             <thead>
                 <tr>
