@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
 import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
-import ViewCompleted from './ViewImportant/ViewImportant'
+import ViewCompleted from './ViewCompleted/ViewCompleted'
 import ViewImportant from './ViewImportant/ViewImportant'; 
 import {Button} from 'antd';
 import './ListFetch.css'
+import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);
@@ -44,9 +45,9 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-            // console.log('completed')
+             console.log('completed')
             return(
-            <div completed={completed} setCompleted={setCompleted}>Completed View</div>)
+            <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)
         } else
         return(
         <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
@@ -87,13 +88,6 @@ const List = props => {
         }
     }
     return (
-
-        <>
-            <button>
-            <DisplayList list={list} sessionToken={props.sessionToken}/>
-            </button>
-        </>
-
         <div className="listFetch"> 
             {createButton()}
             {completedButton()}
@@ -104,7 +98,6 @@ const List = props => {
             
             <Button id="delete">Delete User Account</Button>
         </div>
-
     )
 
 }
