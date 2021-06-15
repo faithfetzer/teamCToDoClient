@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
 import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
-import ViewCompleted from './ViewImportant/ViewImportant'
+import ViewCompleted from './ViewCompleted/ViewCompleted'
 import ViewImportant from './ViewImportant/ViewImportant'; 
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import {Button} from 'antd';
 import './ListFetch.css'
+import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);
@@ -46,14 +47,19 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-            // console.log('completed')
+             console.log('completed')
             return(
-            <div completed={completed} setCompleted={setCompleted}>Completed View</div>)
+
+            <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)
+        
+
+            
         } else if(deleteStatus){
             // console.log('completed')
             return(
             <DeleteUser deleteStatus={deleteStatus} setDeleteStatus={setDeleteStatus} sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>)
         } else{
+
         return(
         <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
     }
@@ -94,6 +100,7 @@ const List = props => {
         }
     }
 
+
     const deleteUserButton = () =>{
         if(deleteStatus ===false){
             console.log('delete')
@@ -114,6 +121,7 @@ const List = props => {
             </button> */}
         
 
+
         <div className="listFetch"> 
             {createButton()}
             {completedButton()}
@@ -124,7 +132,9 @@ const List = props => {
             
             {deleteUserButton()}
         </div>
+
         </>
+
     )
 
 }

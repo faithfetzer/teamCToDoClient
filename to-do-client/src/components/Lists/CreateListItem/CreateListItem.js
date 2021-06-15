@@ -9,7 +9,7 @@ const ListItemCreate = (props) => {
     const [duration, setDuration] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3000/list/create', {
+        fetch('http://localhost:4000/list/create', {
             method: 'POST',
             body: JSON.stringify({log: {name: name, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
