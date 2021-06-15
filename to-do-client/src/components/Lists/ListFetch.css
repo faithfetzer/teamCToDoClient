@@ -8,3 +8,7 @@
 #delete{
     background-color: #C5351B;
 }
+
+.goBackButton {
+    border: 2px solid #0081AF;
+}

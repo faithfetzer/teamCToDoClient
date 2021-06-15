@@ -14,12 +14,12 @@ const EditListItem = (props) => {
     // const [editCompleted. setEditCompleted] = 
     // const listUpdate = (event, list) => {
     //     event.preventDefault();
-    //     fetch(`${APIURL}/list/${props.listToEdit.id}`, {
+    //     fetch(`${APIURL}/list/${props.itemToEdit}`, {
     //         method: 'PUT',
     //         body: JSON.stringify({list: {name: setEditName, date: setEditDate, due: setEditTimeDue, description: setEditDescription, duration: setEditDuration}}),
     //         headers: new Headers({
     //             'Content-Type': 'application/json',
-    //             'Authorization': props.token
+    //             'Authorization': props.sessionToken
     //         })
     //     }) .then((res => {
             // props.setList([]);
