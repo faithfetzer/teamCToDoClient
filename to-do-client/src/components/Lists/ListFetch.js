@@ -26,25 +26,25 @@ const List = props => {
         })
         .then(res => res.json())
         .then(json => setList(json))
-        // .then(console.log('list', list))
+        .then(console.log('list', list))
     } 
 
     useEffect(() => {
         console.log('fetch list')
         fetchList()
-    }, [setList]);
+    }, []);
 
     const displayReturn = () =>{
         if(create){
-            console.log('create')
+            // console.log('create')
             return(
             <ListItemCreate create={create} setCreate={setCreate}/>)
         } else if(important){
-            console.log('important')
+            // console.log('important')
             return(
-            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list} fetchList={fetchList()}/>)
+            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-            console.log('completed')
+            // console.log('completed')
             return(
             <div completed={completed} setCompleted={setCompleted}>Completed View</div>)
         } else
@@ -55,22 +55,22 @@ const List = props => {
     const createButton = () =>{
         if(create){
             return(
-                <Button onClick={() => {setCreate(false)}}>Close</Button>
+                <Button className="goBackButton" onClick={() => {setCreate(false)}}>Close</Button>
             )
         } else {
             return(
-                <Button onClick={() => {setCreate(true)}}>Create Item</Button>
+                <Button onClick={() => {setCreate(true); setImportant(false); setCompleted(false);}}>Create Item</Button>
             )
         }
     }
     const completedButton = () =>{
         if(completed){
             return(
-                <Button onClick={() => {setCompleted(false)}}>View Active Items</Button>
+                <Button className="goBackButton" onClick={() => {setCompleted(false)}}>View Active Items</Button>
             )
         } else {
             return(
-                <Button onClick={() => {setCompleted(true)}}>View Completed Items</Button>
+                <Button onClick={() => {setCompleted(true); setCreate(false); setImportant(false)}}>View Completed Items</Button>
             )
         }
     }
@@ -78,11 +78,11 @@ const List = props => {
     const importantButton = () =>{
         if(important){
             return(
-                <Button onClick={() => {setImportant(false)}}>View All Items</Button>
+                <Button className="goBackButton" onClick={() => {setImportant(false)}}>View All Items</Button>
             )
         } else {
             return(
-                <Button onClick={() => {setImportant(true)}}>View Important</Button>
+                <Button onClick={() => {setImportant(true); setCompleted(false); setCreate(false);}}>View Important</Button>
             )
         }
     }

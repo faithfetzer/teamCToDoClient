@@ -8,7 +8,7 @@ import { SortAscendingOutlined } from "@ant-design/icons";
 
 
 const DisplayList = (props) => {
-    console.log(props.list);
+    // console.log(props.list);
     const [itemToEdit, setItemToEdit] = useState(undefined);
     const [entryToEdit, setEntryToEdit] = useState(undefined);
 
