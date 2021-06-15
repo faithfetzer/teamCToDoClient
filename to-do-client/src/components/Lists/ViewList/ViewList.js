@@ -6,59 +6,54 @@ import APIURL from '../../../helpers/environment';
 
 const DisplayList = (props) => {
     // console.log(props);
-    const [editItem, setEditItem] = useState(false);
+    const [itemToEdit, setItemToEdit] = useState(undefined);
 
-    const deleteListItem = () => {
-        fetch(`${APIURL}/list/${props.list.id}`, {
+    const deleteListItem = (id) => {
+        fetch(`${APIURL}/list/${id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': props.sessionToken
             })
         }) 
-        .then(() => props.fetchList())
+        .then(() => props.setList([]))
     }
-
-    // const buttonText = editItem ? <EditListItem list={props.list} itemId={props.list.id} setEditItem={setEditItem}/>: 'Edit'
 
     const listMapper = () => {
 
-        return props.list.map((list, index) => {
-            return(
-                <tr key={index}>
-                    {/* <th scope="row">{list.id}</th> */}
-                    <td>{list.name}</td>
-                    <td>{list.date}</td>
-                    <td>{list.timedue}</td>
-                    <td>{list.description}</td>
-                    <td>{list.duration}</td>
-                    <td>{list.completed}</td>
-                    <td>{list.important}</td>
-                    <td><button>Edit</button></td>
-                    {/* <td><button onClick={setEditItem(true)}>{buttonText}</button></td> */}
-                    <td><button  onClick={() => {deleteListItem()}}>Delete</button></td>
-                    
-                </tr>
-            )
-        })
+            return props.list.map((list, index) => {
+                return(
+                    <tr key={index}>
+                        {/* <th scope="row">{list.id}</th> */}
+                        <td>{list.name}</td>
+                        <td>{list.date}</td>
+                        <td>{list.timedue}</td>
+                        <td>{list.description}</td>
+                        <td>{list.duration}</td>
+                        <td>{list.completed}</td>
+                        <td>{list.important}</td>
+                        {/* <td><button>Edit</button></td> */}
+                        <td><button onClick={() => {setItemToEdit(list.id)}}>Edit</button></td>
+                        <td><button  onClick={() => {deleteListItem(list.id)}}>Delete</button></td>
+                        
+                    </tr>
+                )
+            })
 
-    }
+        }
 
-
-
-    return(
-        <>
-        <h1>Your ToDo List</h1>
+    const displayReturn = () => itemToEdit? 
+        <EditListItem sessionToken={props.sessionToken} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit}/> : 
         <Table>
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>date</th>
-                    <th>time due</th>
-                    <th>description</th>
-                    <th>duration</th>
-                    <th>completed</th>
-                    <th>important</th>
+                    <th>Item Name</th>
+                    <th>Date Due</th>
+                    <th>Time Due</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Completed?</th>
+                    <th>Important</th>
                     <th></th>
                     
                 </tr>
@@ -68,7 +63,35 @@ const DisplayList = (props) => {
             </tbody>
         </Table>
 
-        {/* <EditListItem sessionToken={props.sessionToken} list={props.list}/> */}
+    
+
+
+
+    return(
+        <>
+        
+        <h1>Your ToDo List</h1>
+        {displayReturn()}
+        {/*<Table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Date Due</th>
+                    <th>Time Due</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Completed?</th>
+                    <th>Important</th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {listMapper()}
+            </tbody>
+        </Table>
+
+        <EditListItem sessionToken={props.sessionToken} list={props.list}/> */}
         </>
     )
 }

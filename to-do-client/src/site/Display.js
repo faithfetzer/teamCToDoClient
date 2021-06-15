@@ -28,6 +28,7 @@ const Display = (props) => {
     }
 
     useEffect(() => {
+        console.log(' display view')
             displayView()
         }, [props.loginStatus]);
 
