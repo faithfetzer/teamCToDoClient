@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from '../Auth/Auth';
+import {Button} from 'antd'
 
 
 const Logout = (props) => {
@@ -7,7 +8,7 @@ const Logout = (props) => {
 
     return(
         <div>
-            <button onClick={props.clearLocalStorage, props.logoutButton}>Logout</button>
+            <Button onClick={props.clearLocalStorage, props.logoutButton}>Logout</Button>
         </div>
     )
 }

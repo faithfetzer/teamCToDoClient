@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import Auth from "../components/Auth/Auth";
 import ListFetch from '../components/Lists/ListFetch';
 import Welcome from '../components/Welcome/Welcome';
+import './Display.css'
 
 const Display = (props) => {
     // console.log(props);
@@ -16,7 +17,7 @@ const Display = (props) => {
             return(
                 <Auth updateLocalStorage={props.updateLocalStorage} clearLocalStorage={props.clearLocalStorage} sessionToken={props.sessionToken} loginStatus={props.loginStatus} setLoginStatus={props.setLoginStatus}/>
             )
-        } else if(props.loginStatus === 'signedIn'){
+        } else if(props.loginStatus === 'signedIn' && props.sessionToken !== undefined){
             return(
                 <ListFetch sessionToken={props.sessionToken}/>
             )
@@ -33,7 +34,7 @@ const Display = (props) => {
         }, [props.loginStatus]);
 
     return (
-        <div>
+        <div className="body">
             {displayView()}
         </div>
     );

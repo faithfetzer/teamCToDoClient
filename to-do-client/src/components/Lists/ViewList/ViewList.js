@@ -1,7 +1,9 @@
 import React, {useState}from "react";
-import {Table} from 'reactstrap';
+// import {Table} from 'reactstrap';
 import EditListItem from '../EditListItem/EditListItem';
 import APIURL from '../../../helpers/environment';
+import './ViewList.css'
+import { Button, Table } from "antd";
 
 
 const DisplayList = (props) => {
@@ -33,8 +35,8 @@ const DisplayList = (props) => {
                         <td>{list.completed}</td>
                         <td>{list.important}</td>
                         {/* <td><button>Edit</button></td> */}
-                        <td><button onClick={() => {setItemToEdit(list.id)}}>Edit</button></td>
-                        <td><button  onClick={() => {deleteListItem(list.id)}}>Delete</button></td>
+                        <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
+                        <td><Button onClick={() => {deleteListItem(list.id)}}>Delete</Button></td>
                         
                     </tr>
                 )
@@ -68,7 +70,7 @@ const DisplayList = (props) => {
 
 
     return(
-        <>
+        <div className="fetchTable">
         
         <h1>Your ToDo List</h1>
         {displayReturn()}
@@ -92,7 +94,7 @@ const DisplayList = (props) => {
         </Table>
 
         <EditListItem sessionToken={props.sessionToken} list={props.list}/> */}
-        </>
+        </div>
     )
 }
 
