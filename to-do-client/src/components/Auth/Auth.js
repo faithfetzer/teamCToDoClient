@@ -6,12 +6,12 @@ import {  Form, Input, Select, Button} from 'antd';
 
 // need to separate out login/signup fields, leaving auth with toggle for now- FF
 const Auth = (props) => {
-    // console.log(props)
+    console.log(props)
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [login, setLogin] = useState(true);
+    // const [login, setLogin] = useState(true);
     
     const title = () => props.loginStatus == 'login' ? 'Login' : "Sign Up For a New Account"
 
@@ -30,7 +30,7 @@ const Auth = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let reqBody = login ?
+        let reqBody = props.loginStatus == 'login' ?
         {
             email: email,
             password: password
@@ -41,7 +41,7 @@ const Auth = (props) => {
             email: email,
             password: password
         }
-        let url = login ?
+        let url = props.loginStatus == 'login' ?
         `${APIURL}/user/login` :
         `${APIURL}/user/register`;
 
@@ -72,6 +72,7 @@ const Auth = (props) => {
             <Input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </div>
     ) : null;
+
     return(
             <Form className="login-signup">
                 <h1>{title()}</h1>

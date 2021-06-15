@@ -26,7 +26,7 @@ const List = props => {
         })
         .then(res => res.json())
         .then(json => setList(json))
-        // .then(console.log('list', list))
+        .then(console.log('list', list))
     } 
 
     useEffect(() => {
