@@ -9,7 +9,7 @@ const ListItemCreate = (props) => {
     const [duration, setDuration] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3000/list/create', {
+        fetch('http://localhost:4000/list/create', {
             method: 'POST',
             body: JSON.stringify({log: {name: name, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
@@ -36,7 +36,7 @@ const ListItemCreate = (props) => {
             <input type='text' value={due} placeholder='Due Time'onChange={(e) => setDue(e.target.value)}/>
             <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
             <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
-            <button type='submit'>Create Your List!</button>
+            <button type='submit'> Create Your List!</button>
         </form>
         </div>
     )
