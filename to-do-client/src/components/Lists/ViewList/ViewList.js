@@ -10,6 +10,7 @@ import { SortAscendingOutlined } from "@ant-design/icons";
 const DisplayList = (props) => {
     console.log(props.list);
     const [itemToEdit, setItemToEdit] = useState(undefined);
+    const [entryToEdit, setEntryToEdit] = useState(undefined);
 
 
     const deleteListItem = (id) => {
@@ -37,7 +38,7 @@ const DisplayList = (props) => {
                     <td>{list.completed}</td>
                     <td>{list.important}</td>
                     {/* <td><button>Edit</button></td> */}
-                    <td><Button onClick={() => { setItemToEdit(list.id) }}>Edit</Button></td>
+                    <td><Button onClick={() => { setItemToEdit(list.id); setEntryToEdit(list)}}>Edit</Button></td>
                     <td><Button onClick={() => { deleteListItem(list.id) }}>Delete</Button></td>
 
                 </tr>
@@ -113,7 +114,7 @@ const DisplayList = (props) => {
     }
 
     const displayReturn = () => itemToEdit ?
-        <EditListItem sessionToken={props.sessionToken} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} /> :
+        <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} /> :
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
         <table>
                 <tr>
