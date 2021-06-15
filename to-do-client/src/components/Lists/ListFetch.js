@@ -7,7 +7,6 @@ import ViewImportant from './ViewImportant/ViewImportant';
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import {Button} from 'antd';
 import './ListFetch.css'
-import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);
@@ -47,7 +46,7 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-             console.log('completed')
+            console.log('completed')
             return(
 
             <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)

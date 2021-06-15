@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Button } from 'antd';
+import APIURL from '../../../helpers/environment';
 
 const ListItemCreate = (props) => {
     const [name, setName] = useState('');
@@ -7,9 +8,10 @@ const ListItemCreate = (props) => {
     const [due, setDue] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState('');
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:4000/list/create', {
+        fetch(`${APIURL}list/create`, {
             method: 'POST',
             body: JSON.stringify({log: {name: name, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
