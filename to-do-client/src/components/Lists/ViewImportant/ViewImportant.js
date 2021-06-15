@@ -84,7 +84,7 @@ const ViewImportant = (props) => {
     return(
         <>
         <h1>Important Items</h1>
-        {displayReturn()}
+        {/* {displayReturn()} */}
         {/* <Table>
             <thead>
                 <tr>

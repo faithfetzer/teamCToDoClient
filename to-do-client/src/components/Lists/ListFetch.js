@@ -76,7 +76,7 @@ const List = props => {
     }
 
     const importantButton = () =>{
-        if(completed){
+        if(important){
             return(
                 <Button onClick={() => {setImportant(false)}}>View All Items</Button>
             )
