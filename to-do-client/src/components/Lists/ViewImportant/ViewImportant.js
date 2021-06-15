@@ -40,10 +40,9 @@ const ViewImportant = (props) => {
         viewImportant()
     }, [props.setImportant]);
 
-    // const listMapper = async () => {
-    //     await viewImportant()
-    //     console.log("mapper", props.list)
-    //     return props.list.map((list, index) => {
+    // const listMapper = () => {
+    // 
+    //     return importantList.map((list, index) => {
     //         return(
     //             <tr key={index}>
     //                 {/* <th scope="row">{list.id}</th> */}
