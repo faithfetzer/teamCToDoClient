@@ -19,14 +19,14 @@ const Auth = (props) => {
         props.setLoginStatus('signedIn');
     }
 
-    // const loginToggle = (e) => {
-    //     e.preventDefault();
-    //     setLogin(!login);
-    //     setEmail('');
-    //     setPassword('');
-    //     setFirstName('');
+    //  const loginToggle = (e) => {
+    //      e.preventDefault();
+    //      setLogin(!login);
+    //      setEmail('');
+    //      setPassword('');
+    //      setFirstName('');
     //     setLastName('');
-    // }
+    //  }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ const Auth = (props) => {
         <div>
             <label htmlFor='firstName'>First Name</label>
             <br />
-            <Input type = "text" id="firstName" calue={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <Input type = "text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <br />
             <label htmlFor='lastName'>Last Name</label>
             <br />
@@ -84,7 +84,7 @@ const Auth = (props) => {
                 <br />
                 <Input type ="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
-                {/* <button onClick={loginToggle}>Login/Signup Toggle</button> */}
+                {/* {<button onClick={loginToggle}>Login/Signup </button> } */}
                 <br />
                 <Button type ="submit" onClick={handleSubmit}>Submit</Button>
             </Form>

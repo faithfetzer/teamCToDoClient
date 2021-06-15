@@ -17,6 +17,35 @@ const ViewCompleted = (props) => {
         .then(res => res.json())
         .then(json => props.setList(json))
     }
-}
 
-//not completed yet just a stopping point.
+    const listMapper = () => {
+
+        return props.list.map((list, index) => {
+            return (
+                <tr key={index}>
+                    {/* <th scope="row">{list.id}</th> */}
+                    <td>{list.name}</td>
+                    <td>{list.date}</td>
+                    <td>{list.description}</td>
+                    <td>{list.duration}</td>
+                    <td>{list.completed}</td>
+                    <td>{list.important}</td>
+                    {/* <td><button>Edit</button></td> */}
+                    <td><Button onClick={() => {
+                        setItemToEdit(list.id) }}>Edit</Button></td>
+                    <td><Button onClick={() => {
+                        completedListItem(list.id) }}>Complete</Button></td>
+                </tr>
+            )
+        })
+    }
+}
+    // const colums =[
+    //     {
+    //         title: 'Item Name',
+    //         dataIndex: 'name',
+    //         key: 'name',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.name - b
+    //     }
+    // ]
