@@ -7,7 +7,6 @@ import ViewImportant from './ViewImportant/ViewImportant';
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import {Button} from 'antd';
 import './ListFetch.css'
-import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);

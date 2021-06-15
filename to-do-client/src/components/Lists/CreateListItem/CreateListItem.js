@@ -7,6 +7,7 @@ const ListItemCreate = (props) => {
     const [due, setDue] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState('');
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch('http://localhost:4000/list/create', {

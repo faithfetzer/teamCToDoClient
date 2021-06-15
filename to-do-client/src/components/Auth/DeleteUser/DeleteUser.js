@@ -41,9 +41,9 @@ const DeleteUser = (props) => {
             <h5>Warning! This is final and cannot be undone</h5>
 
             <label htmlFor="email">Email:</label>
-                <br />
-                <input type="text" id='email' value={emailToDelete} onChange={(e) =>setEmailToDelete(e.target.value)} />
-                <br />
+            <br />
+            <input type="text" id='email' value={emailToDelete} onChange={(e) =>setEmailToDelete(e.target.value)} />
+            <br />
                 <label htmlFor="password">Password</label>
                 <br />
                 <input type ="text" id='password' value={passwordToDelete} onChange={(e) => setPasswordToDelete(e.target.value)} />
