@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
+import { Button } from 'antd';
 
-
-
-const listItemCreate = (props) => {
+const ListItemCreate = (props) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [due, setDue] = useState('');
@@ -30,19 +29,21 @@ const listItemCreate = (props) => {
     }
 
     return(
+        <div>Create List Item
         <form onSubmit={handleSubmit}>
-            <input type='text' value={name} placeholder='ToDo Item'onChange={(e) => setList(e.target.value)}/>
+            <input type='text' value={name} placeholder='ToDo Item'onChange={(e) => setName(e.target.value)}/>
             <input type='text' value={date} placeholder='Due Date'onChange={(e) => setDate(e.target.value)}/>
-            <input type='text' value={due} placeholder='Due Time'onChange={(e) => setdue(e.target.value)}/>
+            <input type='text' value={due} placeholder='Due Time'onChange={(e) => setDue(e.target.value)}/>
             <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
             <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
             <button type='submit'>Create Your List!</button>
         </form>
+        </div>
     )
 
 }
 
-export default listItemCreate;
+export default ListItemCreate;
 
 // goes to /list/create endpoint
 

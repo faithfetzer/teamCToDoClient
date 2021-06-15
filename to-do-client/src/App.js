@@ -3,9 +3,8 @@ import React, {useState, useEffect} from 'react';
 import Footer from './site/Footer'
 import Header from './site/Header'
 import Display from './site/Display'
-
 import {Layout} from 'antd'
-import EditListItem from './components/Lists/EditListItem/EditListItem';
+// import EditListItem from './components/Lists/EditListItem/EditListItem';
 
 
 const App = (props) => {
@@ -13,16 +12,17 @@ const App = (props) => {
   // console.log(props);
   const [sessionToken, setSessionToken] = useState(undefined);
   const [loginStatus, setLoginStatus] = useState(undefined);
-  const [lists, setLists] = useState([]);
-  const [updateActive, setUpdateActive] = useState(false);
-  const [listToUpdate, setListToUpdate] = useState([]);
+  // const [lists, setLists] = useState([]);
+  // const [updateActive, setUpdateActive] = useState(false);
+  // const [listToUpdate, setListToUpdate] = useState([]);
 
 
     useEffect(() => {
+      console.log('session token')
         if (localStorage.getItem("token")) {
             setSessionToken(localStorage.getItem("token"));
         }
-    }, [sessionToken]);
+    }, []);
 
     const updateLocalStorage = (newToken) => {
         localStorage.setItem("token", newToken);
@@ -34,18 +34,18 @@ const App = (props) => {
         setSessionToken(undefined);
     };
 
-    const editUpdateList = (list) => {
-      setListToUpdate(list);
-      console.log(list);
-    }
+    // const editUpdateList = (list) => {
+    //   setListToUpdate(list);
+    //   console.log(list);
+    // }
 
-    const updateOn = () => {
-      setUpdateActive(true);
-    }
+    // const updateOn = () => {
+    //   setUpdateActive(true);
+    // }
 
-    const updateOff = () => {
-      setUpdateActive(false);
-    }
+    // const updateOff = () => {
+    //   setUpdateActive(false);
+    // }
 
 
 

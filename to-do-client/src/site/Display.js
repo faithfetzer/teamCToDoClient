@@ -6,21 +6,18 @@ import React, { useEffect, useState } from "react";
 import Auth from "../components/Auth/Auth";
 import ListFetch from '../components/Lists/ListFetch';
 import Welcome from '../components/Welcome/Welcome';
+import './Display.css'
 
 const Display = (props) => {
-    console.log(props);
-    console.log(props.loginStatus)
-
-    useEffect(() => {
-        displayView()
-    }, [props.loginStatus]);
+    // console.log(props);
+    // console.log(props.loginStatus)
 
     const displayView = () => {
         if(props.loginStatus === 'login' || props.loginStatus === 'signup'){
             return(
                 <Auth updateLocalStorage={props.updateLocalStorage} clearLocalStorage={props.clearLocalStorage} sessionToken={props.sessionToken} loginStatus={props.loginStatus} setLoginStatus={props.setLoginStatus}/>
             )
-        } else if(props.loginStatus === 'signedIn'){
+        } else if(props.loginStatus === 'signedIn' && props.sessionToken !== undefined){
             return(
                 <ListFetch sessionToken={props.sessionToken}/>
             )
@@ -31,8 +28,13 @@ const Display = (props) => {
         }
     }
 
+    useEffect(() => {
+        console.log(' display view')
+            displayView()
+        }, [props.loginStatus]);
+
     return (
-        <div>
+        <div className="body">
             {displayView()}
         </div>
     );

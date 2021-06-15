@@ -1,0 +1,14 @@
+.listFetch button {
+    background-color: #BAA898;
+    margin: .5em;
+    padding: 10px 10px 10px 10px;
+    height: 2em;
+}
+
+#delete{
+    background-color: #C5351B;
+}
+
+.goBackButton {
+    border: 2px solid #0081AF;
+}

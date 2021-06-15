@@ -1,4 +1,17 @@
+.header{
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    color: #333847;
+}
+
 button {
     background-color: #EEE0CB;
+    height: 2em;
     border: none;
+    cursor: pointer;
+    margin: .5em;
+    border-radius: 5px;
 }
