@@ -1,0 +1,9 @@
+.fetchTable {
+    border: 3px solid #0081AF;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.fetchTable h1{
+    border-bottom: 3px solid #0081AF;
+}

@@ -3,7 +3,7 @@ import React, {useState, useEffect}from 'react';
 import APIURL from '../../../helpers/environment';
 import DisplayList from '../ViewList/ViewList';
 
-const CompletedFetch = props => {
+const CompletedFetch = (props) => {
     //console.log(props);
     const [completed, setCompleted] = useState([]);
 
@@ -24,7 +24,7 @@ const CompletedFetch = props => {
 
     useEffect(() => {
         fetchCompleted()
-    }, [list/completed]);
+    }, [list.completed]);
 
     // return (
     //     <>

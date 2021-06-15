@@ -1,7 +1,8 @@
 import React, {useState, useEffect}from "react";
-import {Table} from 'reactstrap';
+// import {Table} from 'reactstrap';
 import EditListItem from '../EditListItem/EditListItem';
 import APIURL from '../../../helpers/environment';
+import { Button, Table } from "antd";
 
 
 const ViewImportant = (props) => {
@@ -29,15 +30,16 @@ const ViewImportant = (props) => {
                 'Authorization': props.sessionToken
             })
         }) 
-        .then(() => props.setList([]))
+        .then(() => props.fetchList())
     }
 
     useEffect(()=>{
         viewImportant()
     }, [props.setImportant]);
 
-    const listMapper = () => {
-
+    const listMapper = async () => {
+        await viewImportant()
+        console.log("mapper", props.list)
         return props.list.map((list, index) => {
             return(
                 <tr key={index}>
@@ -49,8 +51,8 @@ const ViewImportant = (props) => {
                     <td>{list.duration}</td>
                     <td>{list.completed}</td>
                     <td>{list.important}</td>
-                    <td><button onClick={() => {setItemToEdit(list.id)}}>Edit</button></td>
-                    <td><button  onClick={() => {deleteListItem()}}>Delete</button></td>
+                    <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
+                    <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
                     
                 </tr>
             )
@@ -82,7 +84,7 @@ const ViewImportant = (props) => {
     return(
         <>
         <h1>Important Items</h1>
-        {displayReturn()}
+        {/* {displayReturn()} */}
         {/* <Table>
             <thead>
                 <tr>
