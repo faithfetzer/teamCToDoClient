@@ -87,6 +87,13 @@ const List = props => {
         }
     }
     return (
+
+        <>
+            <button>
+            <DisplayList list={list} sessionToken={props.sessionToken}/>
+            </button>
+        </>
+
         <div className="listFetch"> 
             {createButton()}
             {completedButton()}
@@ -97,6 +104,7 @@ const List = props => {
             
             <Button id="delete">Delete User Account</Button>
         </div>
+
     )
 
 }
