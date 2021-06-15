@@ -36,7 +36,7 @@ const ListItemCreate = (props) => {
             <input type='text' value={due} placeholder='Due Time'onChange={(e) => setDue(e.target.value)}/>
             <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
             <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
-            <button type='submit'>Create Your List!</button>
+            <button type='submit'> Create Your List!</button>
         </form>
         </div>
     )

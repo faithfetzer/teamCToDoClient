@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import APIURL from '../../../helpers/environment';
-
-
+import Popup from './EditPopup';
 
 
 const EditListItem = (props) => {
@@ -31,25 +30,16 @@ const EditListItem = (props) => {
 
 
     return (
-        //add some sort of pop up here
         <div>
-            Edit List Item
-            <button onClick={() => { props.setItemToEdit(undefined) }}>Cancel</button>
-            <button>Submit</button>
-            {/* <div className='header'>
-                Edit To-Do List
-            </div>
-            <div className='body'>
-                table with all params w/ input fields 
-            </div>
-            <div className='footer'>
-                Save edit button
-            </div> */}
-
+            <Popup />
         </div>
     )
 
 }
+
+
+
+
 
 
 export default EditListItem;
