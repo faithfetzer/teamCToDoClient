@@ -33,7 +33,9 @@ const List = props => {
 
     return (
         <>
+            <button>
             <DisplayList list={list} sessionToken={props.sessionToken}/>
+            </button>
         </>
     )
 
