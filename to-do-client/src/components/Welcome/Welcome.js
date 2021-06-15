@@ -12,8 +12,10 @@ const Welcome = (props) => {
             {/* <div className="welcomeImage">
                 <img id="background-image" src={WelcomePic} alt="background circles" style={{width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center'}}/>
             </div> */}
-            <Col span={12} offset={12}><h1>Welcome</h1></Col>
-            <Col><h5 span={12} offset={12}><b className="bold" onClick={loginButton}>Login</b> or <b className="bold" onClick={signupButton}>Sign Up</b> to get started</h5></Col>
+            <Col>
+            <h1>Welcome</h1>
+            <h5><b className="bold" onClick={loginButton}>Login</b> or <b className="bold" onClick={signupButton}>Sign Up</b> to get started</h5>
+            </Col>
         </div>
     )
 }

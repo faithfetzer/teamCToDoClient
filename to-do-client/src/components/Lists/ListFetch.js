@@ -3,8 +3,9 @@ import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
 import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
 import ViewCompleted from './ViewImportant/ViewImportant'
-import ViewImportant from './ViewImportant/ViewImportant';
-// import {Table, Badge} from 'antd';
+import ViewImportant from './ViewImportant/ViewImportant'; 
+import {Button} from 'antd';
+import './ListFetch.css'
 
 const List = props => {
     // console.log(props);
@@ -41,7 +42,7 @@ const List = props => {
         } else if(important){
             console.log('important')
             return(
-            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
+            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list} fetchList={fetchList()}/>)
         } else if(completed){
             console.log('completed')
             return(
@@ -50,16 +51,52 @@ const List = props => {
         return(
         <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
     }
+
+    const createButton = () =>{
+        if(create){
+            return(
+                <Button onClick={() => {setCreate(false)}}>Close</Button>
+            )
+        } else {
+            return(
+                <Button onClick={() => {setCreate(true)}}>Create Item</Button>
+            )
+        }
+    }
+    const completedButton = () =>{
+        if(completed){
+            return(
+                <Button onClick={() => {setCompleted(false)}}>View Active Items</Button>
+            )
+        } else {
+            return(
+                <Button onClick={() => {setCompleted(true)}}>View Completed Items</Button>
+            )
+        }
+    }
+
+    const importantButton = () =>{
+        if(completed){
+            return(
+                <Button onClick={() => {setImportant(false)}}>View All Items</Button>
+            )
+        } else {
+            return(
+                <Button onClick={() => {setImportant(true)}}>View Important</Button>
+            )
+        }
+    }
     return (
-        <> 
-            <button onClick={() => {setCreate(true)}}>Create Item</button>
-            <button onClick={() => {setCompleted(true)}}>View Completed Items</button>
-            <button onClick={() => {setImportant(true)}}>View Important</button>
+        <div className="listFetch"> 
+            {createButton()}
+            {completedButton()}
+            {importantButton()}
             {/* Need to make it so that when in view improtant/view completed, buttons say "view all"/"view to do list" */}
             {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
             {displayReturn()}
-
-        </>
+            
+            <Button id="delete">Delete User Account</Button>
+        </div>
     )
 
 }

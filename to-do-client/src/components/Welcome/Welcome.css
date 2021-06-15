@@ -1,19 +1,23 @@
 .welcomePage{
     background-image: url('../../assets/Welcome2.png');
     background-size: cover;
-    height: 100vh;
+    min-width: 100vw;
     font-family: 'Montserrat Alternates', sans-serif;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .welcomePage h1{
     font-size: 5em;
     font-weight: 400;
+    color: #004643
 }
 
 .welcomePage h5 {
     font-size: 1em;
     font-weight: 300;
+    color: #333847
 }
 
 .bold{
