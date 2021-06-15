@@ -32,6 +32,8 @@ const EditListItem = (props) => {
         //add some sort of pop up here
         <div>
             Edit List Item
+            <button onClick={() => { props.setItemToEdit(undefined) }}>Cancel</button>
+            <button>Submit</button>
             {/* <div className='header'>
                 Edit To-Do List
             </div>
