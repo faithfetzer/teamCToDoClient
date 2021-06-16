@@ -43,7 +43,7 @@ const ListItemCreate = (props) => {
                 setDescription('');
                 setDuration(undefined);
                 setImportant(false)
-                // props.fetchList();
+                props.fetchList();
             })
     }
 

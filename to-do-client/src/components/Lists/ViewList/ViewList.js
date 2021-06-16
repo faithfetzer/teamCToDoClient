@@ -25,7 +25,7 @@ const DisplayList = (props) => {
             })
         })
         .then(res => console.log(res))
-        .then(listMapper())
+        .then(props.fetchList())
     }
 
     const listMapper = () => {
