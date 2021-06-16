@@ -29,7 +29,7 @@ const Display = (props) => {
     }
 
     useEffect(() => {
-        console.log(' display view')
+        // console.log(' display view')
             displayView()
         }, [props.loginStatus]);
 

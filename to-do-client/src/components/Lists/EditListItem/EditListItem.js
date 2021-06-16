@@ -31,7 +31,8 @@ const EditListItem = (props) => {
 
 
     return (
-        <div> Edit List
+        <div> 
+            <h2>Edit List</h2>
             <form className="editList">
                 <label for='nameInp'> Name: </label>
             <Input className='nameInp' placeholder={editName} bordered={false}  />

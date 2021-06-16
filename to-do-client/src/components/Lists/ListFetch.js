@@ -46,7 +46,7 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-            console.log('completed')
+            // console.log('completed')
             return(
 
             <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)
@@ -102,7 +102,7 @@ const List = props => {
 
     const deleteUserButton = () =>{
         if(deleteStatus ===false){
-            console.log('delete')
+            // console.log('delete')
             return(
             <Button id="delete" onClick={() => {setDeleteStatus(true); setImportant(false); setCompleted(false); setCreate(false);}}>Delete User Account</Button>
             )
@@ -115,16 +115,13 @@ const List = props => {
 
     return (
         <>
-            {/* <button>
-            <DisplayList list={list} sessionToken={props.sessionToken}/>
-        
-            </button> */}
-        
-
         <div className="listFetch"> 
+            <div>
             {createButton()}
             {completedButton()}
             {importantButton()}
+            </div>
+            <br/>
             {/* Need to make it so that when in view improtant/view completed, buttons say "view all"/"view to do list" */}
             {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
             {displayReturn()}
