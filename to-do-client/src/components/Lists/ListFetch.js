@@ -116,13 +116,10 @@ const List = props => {
                     <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
                     )
                 }
-            } 
+
 
     return (
         <>
-                <button>
-                 <DisplayList list={list} sessionToken={props.sessionToken}/>
-                 </button>
         <div className="listFetch"> 
             <div>
             {createButton()}
@@ -134,7 +131,7 @@ const List = props => {
             {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
             {displayReturn()}
             
-            {/* {deleteUserButton()} */}
+            {deleteUserButton()}
         </div>
 </>
 
