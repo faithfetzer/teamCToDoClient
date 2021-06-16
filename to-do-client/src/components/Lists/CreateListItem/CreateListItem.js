@@ -25,7 +25,6 @@ const ListItemCreate = (props) => {
             important: important
         }
 
-
         console.log('req', req)
         fetch(`${APIURL}/list/create`, {
             method: 'POST',
@@ -81,7 +80,7 @@ const ListItemCreate = (props) => {
                 <br/>
                 <label htmlFor="important">Important?</label>
                 <br/>
-                <input id="important" type="checkbox" value={important} onSubmit={(e) => setImportant(e.target.value)}/>
+                <input id="important" type="checkbox" onChange={() => setImportant(true)}/>
                 <br/>
                 <button type='submit' onClick={handleSubmit}> Add Item to Your List!</button>
             </form>

@@ -43,7 +43,7 @@ const ViewImportant = (props) => {
         viewImportant()
     }, []);
 
-    const listMapper = () => {
+    const listMapperImportant = () => {
     
         return importantList.map((list, index) => {
             return(
@@ -62,10 +62,9 @@ const ViewImportant = (props) => {
                 </tr>
             )
         })
-
     }
 
-    const booleanReturn = (info) => info === true ? '!' : null
+    const booleanReturn = (info) => info === true ? '!!!!' : null
 
     // const columns = [
     //     {
@@ -131,7 +130,7 @@ const ViewImportant = (props) => {
     //     console.log('params', sorter)
     // }
 
-    const displayReturn = () => itemToEdit? 
+    const displayReturnImportant = () => itemToEdit ? 
     <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} fetchList={props.fetchList} /> : 
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
 
@@ -150,14 +149,14 @@ const ViewImportant = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {listMapper()}
+                {listMapperImportant()}
             </tbody>
         </table>
 
     return(
         <>
         <h1>Important Items</h1>
-        {displayReturn()}
+        {displayReturnImportant()}
         {/* <Table>
             <thead>
                 <tr>
