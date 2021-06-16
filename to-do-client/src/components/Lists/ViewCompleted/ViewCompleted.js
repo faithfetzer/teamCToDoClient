@@ -7,7 +7,7 @@ import EditListItem from '../EditListItem/EditListItem';
 
 const ViewCompleted = (props) => {
     console.log(props);
-    const [itemCompleted, setItemCompleted] = useState(undefined);
+    const [itemToEdit, setItemToEdit] = useState(undefined);
     const [completedList, setCompletedList] = useState([]);
     const [entryToEdit, setEntryToEdit] = useState(undefined)
 
@@ -44,32 +44,41 @@ const ViewCompleted = (props) => {
     //         })
     //     })
     // }
-     const listMapper = () => {
+    //  const listMapper = () => {
 
-         return props.list.map((list, index) => {
-              return (
-                  <tr key={index}>
-                   {/* <th scope="row">{list.id}</th> */}
-                     <td>{list.name}</td>
-                     <td>{list.date}</td>
-                      <td>{list.description}</td>
-                    <td>{list.duration}</td>
-                      <td>{list.completed}</td>
-                     <td>{list.important}</td>
-                     {/* <td><button>Edit</button></td> */}
-                      <td><Button onClick={() => {
-                     setItemToEdit(list.id) }}>Edit</Button></td>
-                     <td><Button onClick={() => {
-                          completedListItem(list.completed) }}>Complete</Button></td>
-                </tr>
-             )
-          })
-      }
-    return(
-        <div>
-            Completed Items
-        </div>
-    )
+    //      return completedList.map((list, index) => {
+    //           return (
+    //               <tr key={index}>
+    //                {/* <th scope="row">{list.id}</th> */}
+    //                  <td>{list.name}</td>
+    //                  <td>{list.date}</td>
+    //                  <td>{list.timedue}</td>
+    //                   <td>{list.description}</td>
+    //                 <td>{list.duration}</td>
+    //                   {/* <td>{list.completed}</td> */}
+    //                  {/* <td>{list.important}</td> */}
+    //                  <td>{booleanReturn(list.completed)}</td>
+    //                  {/* <td><button>Edit</button></td> */}
+    //                   <td><Button onClick={() => {
+    //                  setItemToEdit(list.id); setEntryToEdit(list) }}>Edit</Button></td>
+    //                  <td><Button onClick={() => {
+    //                       completedListItem(list.completed) }}>Complete</Button></td>
+    //             </tr>
+    //          )
+    //       })
+    //   }
+
+    //   const booleanReturn = (info) => info === true ? '*' : null
+      
+    //   const displayReturn = () => itemToEdit?
+    //   <
+
+    // return(
+    //     <div>
+    //      <h1>Completed Items</h1>
+    //      {displayReturn()}
+    //     </div>
+    // )
 }
     // const colums =[
     //     {
