@@ -55,12 +55,12 @@ const DisplayList = (props) => {
     //     'are you sure?'
     // }
 
-    useEffect(() => {
-        console.log('list map')
-        listMapper()
-    }, [])
+    // useEffect(() => {
+    //     console.log('list map')
+    //     listMapper()
+    // }, [])
 
-    const booleanReturn = (info) => info === true ? '!' : null
+    const booleanReturn = (info) => info === true ? '!!!!' : null
 
     // const columns = [
     //     {
@@ -122,7 +122,7 @@ const DisplayList = (props) => {
         // },
     // ];
 
-    const data = props.list
+    // const data = props.list
 
     // function onChange(sorter) {
     //     console.log('params', sorter)

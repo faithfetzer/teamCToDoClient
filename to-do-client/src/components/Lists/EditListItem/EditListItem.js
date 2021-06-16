@@ -103,7 +103,7 @@ const EditListItem = (props) => {
 
     return (
         <div> 
-            <button>Cancel Edit</button> 
+            <button onClick={() => props.setItemToEdit(undefined)}>Cancel Edit</button> 
             {/* need to make this button functional -FF */}
             <h2>Edit List</h2>
             <form className="editList">
@@ -129,11 +129,11 @@ const EditListItem = (props) => {
                 <br/>
                 <label htmlFor='important'> Important? </label>
                 <br/>
-                <Input id="important" type="checkbox" value={editImportant} onChange={(e) => setEditImportant(e.target.value)} />
+                <Input id="important" type="checkbox" value={editImportant} onChange={() => setEditImportant(true)} checked={editImportant? true : false}/>
                 <br/>
                 <label htmlFor='completed'> Completed? </label>
                 <br/>
-                <Input id="completed" type="checkbox" value={editCompleted} onChange={(e) => setEditCompleted(e.target.value)} />
+                <Input id="completed" type="checkbox" value={editCompleted} onChange={() => setEditCompleted(true)} checked={editCompleted? true : false}/>
                 <br/>
                 <button onClick={listUpdate}> Save </button>
             </form>

@@ -12,9 +12,9 @@ import './ListFetch.css'
 const List = props => {
     console.log(props);
     const [ list, setList ] = useState([]);
-    const [ completed, setCompleted] = useState(false);
+    const [ completedStatus, setCompletedStatus] = useState(false);
     const [ create, setCreate] = useState(false);
-    const [ important, setImportant] = useState(false);
+    const [ importantStatus, setImportantStatus] = useState(false);
     const [deleteStatus, setDeleteStatus] =useState(false);
     const [viewStatus, setViewStatus] = useState(true);
 
@@ -43,15 +43,15 @@ const List = props => {
             // console.log('create')
             return(
                 <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken} fetchList={fetchList}/>)
-        } else if(important){
+        } else if(importantStatus){
             // console.log('important')
             return(
-                <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list} fetchList={fetchList}/>)
-        } else if(completed){
+                <ViewImportant importantStatus={importantStatus} setImportantStatus={setImportantStatus} sessionToken={props.sessionToken} setList={setList} list={list} fetchList={fetchList}/>)
+        } else if(completedStatus){
             // console.log('completed')
             return(
                 // <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} setList={setList} list={list}/></div>)
-                <div completed={completed} setCompleted={setCompleted}><FaithCompletedView sessionToken = {props.sessionToken} setList={setList} list={list} fetchList={fetchList}/></div>)
+                <div completedStatus={completedStatus} setCompletedStatus={setCompletedStatus}><FaithCompletedView sessionToken = {props.sessionToken} setList={setList} list={list} fetchList={fetchList}/></div>)
         } else if(deleteStatus){
             // console.log('completed')
             return(
@@ -69,31 +69,32 @@ const List = props => {
             )
         } else {
             return(
-                <Button onClick={() => {setCreate(true); setImportant(false); setCompleted(false); setDeleteStatus(false)}}>Create Item</Button>
+                <Button onClick={() => {setCreate(true); setImportantStatus(false); setCompletedStatus(false); setDeleteStatus(false)}}>Create Item</Button>
             )
         }
     }
     const completedButton = () =>{
-        if(completed){
+        if(completedStatus){
             return(
-                <Button className="goBackButton" onClick={() => {setCompleted(false)}}>View Active Items</Button>
+                <Button className="goBackButton" onClick={() => {setCompletedStatus(false)}}>View Active Items</Button>
             )
         } else {
             return(
-                <Button onClick={() => {setCompleted(true); setCreate(false); setImportant(false); setDeleteStatus(false)}}>View Completed Items</Button>
+                <Button onClick={() => {setCompletedStatus(true); setCreate(false); setImportantStatus(false); setDeleteStatus(false)}}>View Completed Items</Button>
             )
         }
     }
 
     const importantButton = () =>{
-        if(important){
+        if(importantStatus){
             return(
-                <Button className="goBackButton" onClick={() => {setImportant(false)}}>View All Items</Button>
+                <Button className="goBackButton" onClick={() => {setImportantStatus(false)}}>View All Items</Button>
             )
         } else {
             return(
-                <Button onClick={() => {setImportant(true); setCompleted(false); setCreate(false); setDeleteStatus(false)}}>View Important</Button>
+                <Button onClick={() => {setImportantStatus(true); setCompletedStatus(false); setCreate(false); setDeleteStatus(false)}}>View Important</Button>
             )
+
         }
     }
    
@@ -102,11 +103,11 @@ const List = props => {
         if(deleteStatus ===false){
             // console.log('delete')
             return(
-                <Button id="delete" onClick={() => {setDeleteStatus(true); setImportant(false); setCompleted(false); setCreate(false);}}>Delete User Account</Button>
+                <Button id="delete" onClick={() => {setDeleteStatus(true); setImportantStatus(false); setCompletedStatus(false); setCreate(false);}}>Delete User Account</Button>
                 )
             } else {
                 return(
-                    <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
+                    <Button onClick={() => {setDeleteStatus(false); setImportantStatus(false); setCompletedStatus(false); setCreate(false);}}>Cancel User Delete</Button>
                     )
                 }
             }

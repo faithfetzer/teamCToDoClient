@@ -14,6 +14,7 @@ const FaithCompletedView = (props) => {
 
 
     const viewCompleted = () => {
+        console.log(`${APIURL}/list/completed`)
         fetch(`${APIURL}/list/completed`, {
             method: 'GET',
             headers: new Headers({
@@ -37,7 +38,7 @@ const FaithCompletedView = (props) => {
             })
         })
         .then(res => console.log(res))
-        .then(ViewCompleted())
+        .then(viewCompleted())
     }
 
     useEffect(()=>{
@@ -45,7 +46,7 @@ const FaithCompletedView = (props) => {
         viewCompleted()
     }, []);
 
-    const listMapper = () => {
+    const listMapperCompleted = () => {
     
         return completedList.map((list, index) => {
             return(
@@ -67,8 +68,8 @@ const FaithCompletedView = (props) => {
 
     }
 
-    const booleanReturn = (info) => info === true ? '!' : null
-    const completeBoolean = (info) => info === true ? 'Done!' : null
+    const booleanReturn = (info) => info === true ? '!!!!' : null
+    const completeBoolean = (info) => info === true ? 'Done!' : "not yet"
 
     // const columns = [
     //     {
@@ -134,8 +135,8 @@ const FaithCompletedView = (props) => {
     //     console.log('params', sorter)
     // }
 
-    const displayReturn = () => itemToEdit? 
-    <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} fetchList={props.fetchList} /> : 
+    const displayReturnCompleted = () => itemToEdit ? 
+    <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} fetchList={props.fetchList}/> : 
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
 
         <table>
@@ -153,14 +154,14 @@ const FaithCompletedView = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {listMapper()}
+                {listMapperCompleted()}
             </tbody>
         </table>
 
     return(
         <>
         <h1>Completed Items</h1>
-        {displayReturn()}
+        {displayReturnCompleted()}
         {/* <Table>
             <thead>
                 <tr>
