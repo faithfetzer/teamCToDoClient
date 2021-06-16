@@ -9,7 +9,7 @@ import {Button} from 'antd';
 import './ListFetch.css'
 
 const List = props => {
-    // console.log(props);
+     console.log(props);
     const [ list, setList ] = useState([]);
     const [ completed, setCompleted] = useState(false);
     const [ create, setCreate] = useState(false);
