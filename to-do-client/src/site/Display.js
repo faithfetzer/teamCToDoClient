@@ -19,7 +19,7 @@ const Display = (props) => {
             )
         } else if(props.loginStatus === 'signedIn' && props.sessionToken !== undefined){
             return(
-                <ListFetch sessionToken={props.sessionToken}/>
+                <ListFetch sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>
             )
         } else {
             return(
@@ -29,7 +29,7 @@ const Display = (props) => {
     }
 
     useEffect(() => {
-        console.log(' display view')
+        // console.log(' display view')
             displayView()
         }, [props.loginStatus]);
 

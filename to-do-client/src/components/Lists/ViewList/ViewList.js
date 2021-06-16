@@ -35,9 +35,8 @@ const DisplayList = (props) => {
                     <td>{list.timedue}</td>
                     <td>{list.description}</td>
                     <td>{list.duration}</td>
-                    <td>{list.completed}</td>
-                    <td>{list.important}</td>
-                    {/* <td><button>Edit</button></td> */}
+                    <td>{booleanReturn(list.important)}</td>
+                    {/* <td>{list.important}</td> */}
                     <td><Button onClick={() => { setItemToEdit(list.id); setEntryToEdit(list)}}>Edit</Button></td>
                     <td><Button onClick={() => { deleteListItem(list.id) }}>Delete</Button></td>
 
@@ -46,6 +45,8 @@ const DisplayList = (props) => {
         })
 
     }
+
+    const booleanReturn = (info) => info === true ? '!' : null
 
     const columns = [
         {
@@ -116,6 +117,8 @@ const DisplayList = (props) => {
     const displayReturn = () => itemToEdit ?
         <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} /> :
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
+        <>
+        <h1>Your ToDo List</h1>
         <table>
                 <tr>
                     <th>Item Name</th>
@@ -123,14 +126,16 @@ const DisplayList = (props) => {
                     <th>Time Due</th>
                     <th>Description</th>
                     <th>Duration</th>
-                    <th>Completed?</th>
+                    {/* <th>Completed?</th> */}
                     <th>Important</th>
+                    <th></th>
                     <th></th>
                 </tr>
             <tbody>
                 {listMapper()}
             </tbody>
         </table>
+        </>
 
 
 
@@ -138,29 +143,7 @@ const DisplayList = (props) => {
 
     return (
         <div className="fetchTable">
-
-            <h1>Your ToDo List</h1>
             {displayReturn()}
-            {/*<Table>
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Date Due</th>
-                    <th>Time Due</th>
-                    <th>Description</th>
-                    <th>Duration</th>
-                    <th>Completed?</th>
-                    <th>Important</th>
-                    <th></th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                {listMapper()}
-            </tbody>
-        </Table>
-
-        <EditListItem sessionToken={props.sessionToken} list={props.list}/> */}
         </div>
     )
 }
