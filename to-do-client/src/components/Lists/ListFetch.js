@@ -100,10 +100,10 @@ const List = props => {
         }
     }
 
-        <>
-            <button>
-            <DisplayList list={list} sessionToken={props.sessionToken}/>
-            </button>
+        // <>
+        //     <button>
+        //     <DisplayList list={list} sessionToken={props.sessionToken}/>
+        //     </button>
 
 
     const deleteUserButton = () =>{
@@ -136,7 +136,7 @@ const List = props => {
         </div>
 </>
 
-        </>
+    
 
     )
 

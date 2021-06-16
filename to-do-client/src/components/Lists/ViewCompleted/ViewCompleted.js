@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Button} from 'antd'
-import {Table} from 'reactstrap';
+import {Button, Table} from 'antd'
+// import {Table} from 'reactstrap';
 import APIURL from '../../../helpers/environment'
+import EditListItem from '../EditListItem/EditListItem';
 
 const ViewCompleted = (props) => {
-    //console.log(props);
+    console.log(props);
     const [itemCompleted, setItemCompleted] = useState(undefined);
+    const [completedList, setCompletedList] = useState([]);
+
 
     const viewCompleted = () => {
         fetch(`${APIURL}/list/completed`, {
@@ -17,9 +20,18 @@ const ViewCompleted = (props) => {
         })
         .then(res => res.json())
         .then(json => setItemCompleted(json))
-        //.then(console.log(itemCompleted))
+        (console.log(viewCompleted))
     }
 
+    const completeListItem = (id) => {
+        fetch(`${APIURL}/list/${id}`, {
+            method: 'PUT',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.sessionToken
+            })
+        })
+    }
     // const listMapper = () => {
 
     //     return props.list.map((list, index) => {
