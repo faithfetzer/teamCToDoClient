@@ -59,7 +59,7 @@ const DisplayList = (props) => {
     useEffect(() => {
         console.log('list map')
         listMapper()
-    }, [props.setList])
+    }, [])
 
     const booleanReturn = (info) => info === true ? '!' : null
 
