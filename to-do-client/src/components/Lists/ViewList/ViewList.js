@@ -133,7 +133,7 @@ const DisplayList = (props) => {
 
 
     const displayReturn = () => itemToEdit ?
-        <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} /> : 
+        <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} fetchList={props.fetchList} /> : 
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
         <>
         <h1>Your ToDo List</h1>

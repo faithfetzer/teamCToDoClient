@@ -4,11 +4,12 @@ import {Button} from 'antd'
 
 
 const Logout = (props) => {
-    // console.log(props);
+    console.log(props);
 
     return(
         <div>
-            <Button onClick={props.clearLocalStorage, props.logoutButton}>Logout</Button>
+            <Button onClick={() => { localStorage.clear(); props.logoutButton()}}
+>Logout</Button>
         </div>
     )
 }

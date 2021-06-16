@@ -10,7 +10,7 @@ import {Button} from 'antd';
 import './ListFetch.css'
 
 const List = props => {
-    // console.log(props);
+     console.log(props);
     const [ list, setList ] = useState([]);
     const [ completed, setCompleted] = useState(false);
     const [ create, setCreate] = useState(false);
@@ -96,11 +96,7 @@ const List = props => {
             )
         }
     }
-        // <>
-        //     <button>
-        //     <DisplayList list={list} sessionToken={props.sessionToken}/>
-        //     </button>
-// }
+   
 
     const deleteUserButton = () =>{
         if(deleteStatus ===false){
@@ -113,7 +109,7 @@ const List = props => {
                     <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
                     )
                 }
-            }
+
 
     return (
         <>
@@ -130,10 +126,11 @@ const List = props => {
             
             {deleteUserButton()}
         </div>
-</>
+    </>
 
     )
 
+}
 }
 
 
