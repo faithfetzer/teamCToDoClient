@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DisplayList from './ViewList/ViewList';
 import APIURL from '../../helpers/environment';
 import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
-import ViewCompleted from './ViewCompleted/ViewCompleted'
+// import ViewCompleted from './ViewCompleted/ViewCompleted'
 import ViewImportant from './ViewImportant/ViewImportant'; 
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import FaithCompletedView from './ViewImportant/FaithCompletedView';
@@ -10,7 +10,7 @@ import {Button} from 'antd';
 import './ListFetch.css'
 
 const List = props => {
-     console.log(props);
+    console.log(props);
     const [ list, setList ] = useState([]);
     const [ completed, setCompleted] = useState(false);
     const [ create, setCreate] = useState(false);
@@ -42,23 +42,23 @@ const List = props => {
         if(create){
             // console.log('create')
             return(
-                <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken}/>)
+                <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken} fetchList={fetchList}/>)
         } else if(important){
             // console.log('important')
             return(
-                <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
+                <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list} fetchList={fetchList}/>)
         } else if(completed){
             // console.log('completed')
             return(
                 // <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} setList={setList} list={list}/></div>)
-                <div completed={completed} setCompleted={setCompleted}><FaithCompletedView sessionToken = {props.sessionToken} setList={setList} list={list}/></div>)
+                <div completed={completed} setCompleted={setCompleted}><FaithCompletedView sessionToken = {props.sessionToken} setList={setList} list={list} fetchList={fetchList}/></div>)
         } else if(deleteStatus){
             // console.log('completed')
             return(
                 <DeleteUser deleteStatus={deleteStatus} setDeleteStatus={setDeleteStatus} sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>)
         } else{
             return(
-            <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus}/>)
+            <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus} fetchList={fetchList}/>)
     }
     }
 
@@ -109,7 +109,7 @@ const List = props => {
                     <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
                     )
                 }
-
+            }
 
     return (
         <>
@@ -131,7 +131,7 @@ const List = props => {
     )
 
 }
-}
+
 
 
 export default List;
