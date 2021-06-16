@@ -80,7 +80,7 @@ const EditListItem = (props) => {
             date: editDate, 
             timedue: editTimeDue, 
             description: editDescription, 
-            duration: editDescription, 
+            duration: editDuration, 
             completed: editCompleted, 
             important: editImportant
         }
@@ -92,7 +92,10 @@ const EditListItem = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization': props.sessionToken
             })
-        }) .then((res => {
+        }) .then(res => res.json()) 
+        .then((res => {
+            console.log(res);
+            props.fetchList();
             props.setItemToEdit(undefined);
         }))
     }
@@ -106,7 +109,7 @@ const EditListItem = (props) => {
             <form className="editList">
                 <label htmlFor='nameInp'>Item Name<br/>(required)</label>
                 <br/>
-                <Input id='nameInp' type='text' placeholder={editName} bordered={false} onChange={(e) => setEditName(e.target.value)} required/>
+                <Input id='nameInp' type='text' placeholder={editName} value={editName} bordered={false} onChange={(e) => setEditName(e.target.value)} required/>
                 <br/>
                 <label htmlFor='dateInp'> Date Due</label>
                 <br/>
@@ -122,7 +125,7 @@ const EditListItem = (props) => {
                 <br/>
                 <label htmlFor='durInp'> Duration to Complete<br/>(minutes)</label>
                 <br/>
-                <Input id="durInp" type="integer" placeholder={editDuration} bordered={false} onChange={(e) => setEditDuration(e.target.value)} />
+                <Input id="durInp" type="number" placeholder={editDuration} bordered={false} onChange={(e) => setEditDuration(e.target.value)} />
                 <br/>
                 <label htmlFor='important'> Important? </label>
                 <br/>

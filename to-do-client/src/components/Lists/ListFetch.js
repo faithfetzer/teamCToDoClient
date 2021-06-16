@@ -61,7 +61,7 @@ const List = props => {
         } else{
 
         return(
-        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus}/>)
+        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus} fetchList={fetchList}/>)
     }
     }
 
