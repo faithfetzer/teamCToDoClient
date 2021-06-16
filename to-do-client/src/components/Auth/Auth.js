@@ -6,7 +6,7 @@ import {  Form, Input, Select, Button} from 'antd';
 
 // need to separate out login/signup fields, leaving auth with toggle for now- FF
 const Auth = (props) => {
-    console.log(props)
+    // console.log(props)
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');

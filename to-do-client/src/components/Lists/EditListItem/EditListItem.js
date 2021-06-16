@@ -64,7 +64,7 @@ import { Input } from 'antd';
 
 const EditListItem = (props) => {
     console.log(props)
-    //console.log(props.list.itemToEdit);
+    console.log(props.entryToEdit);
     const [editName, setEditName] = useState(props.entryToEdit.name);
     const [editDate, setEditDate] = useState(props.entryToEdit.date);
     const [editTimeDue, setEditTimeDue] = useState(props.entryToEdit.timedue);
@@ -72,17 +72,27 @@ const EditListItem = (props) => {
     const [editDuration, setEditDuration] = useState(props.entryToEdit.duration);
     const [editCompleted, setEditCompleted] = useState(props.entryToEdit.completed);
     const [editImportant, setEditImportant] = useState(props.entryToEdit.important);
-    const listUpdate = (event) => {
-        event.preventDefault();
-        fetch(`${APIURL}/list/${props.itemToEdit}`, {
+
+    const listUpdate = (e) => {
+        e.preventDefault();
+        let req= {
+            name: editName, 
+            date: editDate, 
+            timedue: editTimeDue, 
+            description: editDescription, 
+            duration: editDescription, 
+            completed: editCompleted, 
+            important: editImportant
+        }
+        console.log('edit req', req)
+        fetch(`${APIURL}/list/update/${props.itemToEdit}`, {
             method: 'PUT',
-            body: JSON.stringify({list: {name: editName, date: editDate, timedue: editTimeDue, description: editDescription, duration: editDuration}}),
+            body: JSON.stringify(req),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': props.sessionToken
             })
         }) .then((res => {
-            //props.setList([]);
             props.setItemToEdit(undefined);
         }))
     }
@@ -90,22 +100,40 @@ const EditListItem = (props) => {
 
     return (
         <div> 
+            <button>Cancel Edit</button> 
+            {/* need to make this button functional -FF */}
             <h2>Edit List</h2>
             <form className="editList">
-                <label for='nameInp'> Name: </label>
-            <Input className='nameInp' placeholder={editName} bordered={false}  />
-            <label for='nameInp'> Date: </label>
-            <Input placeholder={editDate} bordered={false}  />
-            <label for='nameInp'> Time Due: </label>
-            <Input placeholder={editTimeDue} bordered={false}  />
-            <label for='nameInp'> Description: </label>
-            <Input placeholder={editDescription} bordered={false}  />
-            <label for='nameInp'> Duration: </label>
-            <Input placeholder={editDuration} bordered={false}  />
-            <button> Save </button>
-            {/* <button type='submit' onClick={listUpdate}>Save</button> */}
+                <label htmlFor='nameInp'>Item Name<br/>(required)</label>
+                <br/>
+                <Input id='nameInp' type='text' placeholder={editName} bordered={false} onChange={(e) => setEditName(e.target.value)} required/>
+                <br/>
+                <label htmlFor='dateInp'> Date Due</label>
+                <br/>
+                <Input id="dateInp" type='text' placeholder={editDate} bordered={false} onChange={(e) => setEditDate(e.target.value)} />
+                <br/>
+                <label htmlFor='timeInp'> Time Due</label>
+                <br/>
+                <Input id='timeInp' type='text' placeholder={editTimeDue} bordered={false} onChange={(e) => setEditTimeDue(e.target.value)} />
+                <br/>
+                <label htmlFor='descInp'> Description</label>
+                <br/>
+                <Input id='descInp' type='text' placeholder={editDescription} bordered={false} onChange={(e) => setEditDescription(e.target.value)} />
+                <br/>
+                <label htmlFor='durInp'> Duration to Complete<br/>(minutes)</label>
+                <br/>
+                <Input id="durInp" type="integer" placeholder={editDuration} bordered={false} onChange={(e) => setEditDuration(e.target.value)} />
+                <br/>
+                <label htmlFor='important'> Important? </label>
+                <br/>
+                <Input id="important" type="checkbox" value={editImportant} onChange={(e) => setEditImportant(e.target.value)} />
+                <br/>
+                <label htmlFor='completed'> Completed? </label>
+                <br/>
+                <Input id="completed" type="checkbox" value={editCompleted} onChange={(e) => setEditCompleted(e.target.value)} />
+                <br/>
+                <button onClick={listUpdate}> Save </button>
             </form>
-            
         </div>
     )
 
