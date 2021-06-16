@@ -30,7 +30,9 @@ const DeleteUser = (props) => {
             })
         })
         // .then(console.log('user deleted'))
-        .then(props.setSessionToken('undefined'))
+        .then(res => console.log(res))
+        // .then(props.setDeleteStatus(false))
+        .then(props.setSessionToken(undefined))
         .catch(err => console.log(err))
     } 
 
