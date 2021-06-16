@@ -8,6 +8,7 @@ const ViewCompleted = (props) => {
     console.log(props);
     const [itemCompleted, setItemCompleted] = useState(undefined);
     const [completedList, setCompletedList] = useState([]);
+    const [entryToEdit, setEntryToEdit] = useState(undefined)
 
 
     const viewCompleted = () => {
@@ -19,40 +20,50 @@ const ViewCompleted = (props) => {
             })
         })
         .then(res => res.json())
-        .then(json => setItemCompleted(json))
-        (console.log(viewCompleted))
+        .then(res => console.log(res))
+        .then(json => setCompletedList(json))
+
+
+        // console.log(completedList)
     }
 
-    const completeListItem = (id) => {
-        fetch(`${APIURL}/list/${id}`, {
-            method: 'PUT',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': props.sessionToken
-            })
-        })
-    }
-    // const listMapper = () => {
+    useEffect(()=>{
+        console.log('view completed')
+        viewCompleted()
+    }, []);
 
-    //     return props.list.map((list, index) => {
-    //         return (
-    //             <tr key={index}>
-    //                 {/* <th scope="row">{list.id}</th> */}
-    //                 <td>{list.name}</td>
-    //                 <td>{list.date}</td>
-    //                 <td>{list.description}</td>
-    //                 <td>{list.duration}</td>
-    //                 <td>{list.completed}</td>
-    //                 <td>{list.important}</td>
-    //                 {/* <td><button>Edit</button></td> */}
-    //                 <td><Button onClick={() => {
-    //                     setItemToEdit(list.id) }}>Edit</Button></td>
-    //                 <td><Button onClick={() => {
-    //                     completedListItem(list.id) }}>Complete</Button></td>
-    //             </tr>
-    //         )
+
+
+    // const completeListItem = (id) => {
+    //     fetch(`${APIURL}/list/completed/${id}`, {
+    //         method: 'PUT',
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': props.sessionToken
+    //         })
     //     })
     // }
+     const listMapper = () => {
+
+         return props.list.map((list, index) => {
+              return (
+                  <tr key={index}>
+                   {/* <th scope="row">{list.id}</th> */}
+                     <td>{list.name}</td>
+                     <td>{list.date}</td>
+                      <td>{list.description}</td>
+                    <td>{list.duration}</td>
+                      <td>{list.completed}</td>
+                     <td>{list.important}</td>
+                     {/* <td><button>Edit</button></td> */}
+                      <td><Button onClick={() => {
+                     setItemToEdit(list.id) }}>Edit</Button></td>
+                     <td><Button onClick={() => {
+                          completedListItem(list.completed) }}>Complete</Button></td>
+                </tr>
+             )
+          })
+      }
     return(
         <div>
             Completed Items
