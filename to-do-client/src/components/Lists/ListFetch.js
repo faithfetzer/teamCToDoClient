@@ -99,6 +99,11 @@ const List = props => {
         }
     }
 
+        <>
+            <button>
+            <DisplayList list={list} sessionToken={props.sessionToken}/>
+            </button>
+
 
     const deleteUserButton = () =>{
         if(deleteStatus ===false){
@@ -128,7 +133,10 @@ const List = props => {
             
             {deleteUserButton()}
         </div>
+</>
+
         </>
+
     )
 
 }
