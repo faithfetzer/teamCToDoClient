@@ -5,6 +5,7 @@ import ListItemCreate from '../Lists/CreateListItem/CreateListItem'
 import ViewCompleted from './ViewCompleted/ViewCompleted'
 import ViewImportant from './ViewImportant/ViewImportant'; 
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
+import FaithCompletedView from './ViewImportant/FaithCompletedView';
 import {Button} from 'antd';
 import './ListFetch.css'
 
@@ -41,27 +42,23 @@ const List = props => {
         if(create){
             // console.log('create')
             return(
-            <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken}/>)
+                <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken}/>)
         } else if(important){
             // console.log('important')
             return(
-            <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
+                <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
             // console.log('completed')
             return(
-
-            <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)
-        
-
-            
+                // <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} setList={setList} list={list}/></div>)
+                <div completed={completed} setCompleted={setCompleted}><FaithCompletedView sessionToken = {props.sessionToken} setList={setList} list={list}/></div>)
         } else if(deleteStatus){
             // console.log('completed')
             return(
-            <DeleteUser deleteStatus={deleteStatus} setDeleteStatus={setDeleteStatus} sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>)
+                <DeleteUser deleteStatus={deleteStatus} setDeleteStatus={setDeleteStatus} sessionToken={props.sessionToken} setSessionToken={props.setSessionToken}/>)
         } else{
-
-        return(
-        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus} fetchList={fetchList}/>)
+            return(
+            <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus}/>)
     }
     }
 

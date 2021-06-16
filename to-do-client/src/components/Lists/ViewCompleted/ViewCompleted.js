@@ -4,6 +4,7 @@ import {Button, Table} from 'antd'
 import APIURL from '../../../helpers/environment'
 import EditListItem from '../EditListItem/EditListItem';
 
+
 const ViewCompleted = (props) => {
     console.log(props);
     const [itemCompleted, setItemCompleted] = useState(undefined);
@@ -81,6 +82,6 @@ const ViewCompleted = (props) => {
     // ]
 
 
-    export default ViewCompleted;
+   export default ViewCompleted;
 
 
