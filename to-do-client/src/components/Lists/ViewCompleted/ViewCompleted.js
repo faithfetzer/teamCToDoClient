@@ -5,11 +5,13 @@
 // import EditListItem from '../EditListItem/EditListItem';
 
 
+
 // const ViewCompleted = (props) => {
 //     console.log(props);
 //     const [itemCompleted, setItemCompleted] = useState(undefined);
 //     const [completedList, setCompletedList] = useState([]);
 //     const [entryToEdit, setEntryToEdit] = useState(undefined)
+
 
 
 //     const viewCompleted = () => {
@@ -34,6 +36,62 @@
 //     }, []);
 
 
+
+
+    // const completeListItem = (id) => {
+    //     fetch(`${APIURL}/list/completed/${id}`, {
+    //         method: 'PUT',
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': props.sessionToken
+    //         })
+    //     })
+    // }
+    //  const listMapper = () => {
+
+    //      return completedList.map((list, index) => {
+    //           return (
+    //               <tr key={index}>
+    //                {/* <th scope="row">{list.id}</th> */}
+    //                  <td>{list.name}</td>
+    //                  <td>{list.date}</td>
+    //                  <td>{list.timedue}</td>
+    //                   <td>{list.description}</td>
+    //                 <td>{list.duration}</td>
+    //                   {/* <td>{list.completed}</td> */}
+    //                  {/* <td>{list.important}</td> */}
+    //                  <td>{booleanReturn(list.completed)}</td>
+    //                  {/* <td><button>Edit</button></td> */}
+    //                   <td><Button onClick={() => {
+    //                  setItemToEdit(list.id); setEntryToEdit(list) }}>Edit</Button></td>
+    //                  <td><Button onClick={() => {
+    //                       completedListItem(list.completed) }}>Complete</Button></td>
+    //             </tr>
+    //          )
+    //       })
+    //   }
+
+    //   const booleanReturn = (info) => info === true ? '*' : null
+      
+    //   const displayReturn = () => itemToEdit?
+    //   <
+
+    // return(
+    //     <div>
+    //      <h1>Completed Items</h1>
+    //      {displayReturn()}
+    //     </div>
+    // )
+}
+    // const colums =[
+    //     {
+    //         title: 'Item Name',
+    //         dataIndex: 'name',
+    //         key: 'name',
+    //         defaultSortOrder: 'descend',
+    //         sorter: (a, b) => a.name - b
+    //     }
+    // ]
 
 //     // const completeListItem = (id) => {
 //     //     fetch(`${APIURL}/list/completed/${id}`, {
@@ -80,6 +138,7 @@
 //     //         sorter: (a, b) => a.name - b
 //     //     }
 //     // ]
+
 
 
 //    export default ViewCompleted;
