@@ -1,1 +1,0 @@
-// goes to /list/delete endpoint

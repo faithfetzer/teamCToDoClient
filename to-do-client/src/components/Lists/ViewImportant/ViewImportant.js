@@ -9,6 +9,7 @@ const ViewImportant = (props) => {
     console.log(props);
     const [itemToEdit, setItemToEdit] = useState(undefined);
     const [ importantList, setImportantList ] = useState([]);
+    const [entryToEdit, setEntryToEdit] = useState(undefined);
 
 
     const viewImportant = () => {
@@ -26,14 +27,16 @@ const ViewImportant = (props) => {
     }
 
     const deleteListItem = (id) => {
-        fetch(`${APIURL}/list/${id}`, {
+        console.log('id', id)
+        fetch(`${APIURL}/list/delete/${id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.sessionToken
             })
-        }) 
-        .then(() => props.setList([]))
+        })
+        .then(res => console.log(res))
+        .then(viewImportant())
     }
 
     useEffect(()=>{
@@ -54,8 +57,8 @@ const ViewImportant = (props) => {
                     <td>{list.duration}</td>
                     {/* <td>{list.completed}</td> */}
                     <td>{booleanReturn(list.important)}</td>
-                    <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
-                    <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
+                    <td><Button onClick={() => {setItemToEdit(list.id); setEntryToEdit(list)}}>Edit</Button></td>
+                    <td><Button  onClick={() => {deleteListItem(list.id)}}>Delete</Button></td>
                     
                 </tr>
             )
@@ -130,7 +133,7 @@ const ViewImportant = (props) => {
     // }
 
     const displayReturn = () => itemToEdit? 
-        <EditListItem sessionToken={props.sessionToken} setList={props.setList} itemToEdit={itemToEdit}/> : 
+    <EditListItem sessionToken={props.sessionToken} entryToEdit={entryToEdit} setList={props.setList} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} /> : 
         // <Table columns={columns} dataSource={data} pagination={false} onChange={onChange}></Table>
 
         <table>
