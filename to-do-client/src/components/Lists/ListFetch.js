@@ -99,7 +99,6 @@ const List = props => {
             )
         }
     }
-
         // <>
         //     <button>
         //     <DisplayList list={list} sessionToken={props.sessionToken}/>
@@ -110,17 +109,20 @@ const List = props => {
         if(deleteStatus ===false){
             // console.log('delete')
             return(
-            <Button id="delete" onClick={() => {setDeleteStatus(true); setImportant(false); setCompleted(false); setCreate(false);}}>Delete User Account</Button>
-            )
-        } else {
-            return(
-            <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
-            )
-        }
-    }
+                <Button id="delete" onClick={() => {setDeleteStatus(true); setImportant(false); setCompleted(false); setCreate(false);}}>Delete User Account</Button>
+                )
+            } else {
+                return(
+                    <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
+                    )
+                }
+            } */}
 
     return (
         <>
+//                 <button>
+//                 <DisplayList list={list} sessionToken={props.sessionToken}/>
+//                 </button>
         <div className="listFetch"> 
             <div>
             {createButton()}
@@ -132,7 +134,7 @@ const List = props => {
             {/* above gives me errors- when i try to make buttons functional, too many re-renders- FF */}
             {displayReturn()}
             
-            {deleteUserButton()}
+            {/* {deleteUserButton()} */}
         </div>
 </>
 
