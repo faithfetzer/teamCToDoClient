@@ -7,7 +7,7 @@ switch (window.location.hostname) {
         break;
     default:
     case 'https://team-c-to-do-list.herokuapp.com' :
-        APIURL = 'https://to-do-list-team-c.herokuapp.com/'
+        APIURL = 'https://to-do-list-team-c.herokuapp.com'
 }
 
 export default APIURL;

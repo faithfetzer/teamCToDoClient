@@ -11,7 +11,7 @@ const ListItemCreate = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`${APIURL}list/create`, {
+        fetch(`${APIURL}/list/create`, {
             method: 'POST',
             body: JSON.stringify({log: {name: name, date: date, due: due, description: description, duration: duration}}),
             headers: new Headers({
