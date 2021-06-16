@@ -1,60 +1,63 @@
-import React, {useState} from 'react';
-import { Button } from 'antd';
+import React, { useState } from 'react';
+import APIURL from '../../../helpers/environment';
+import { Input } from 'antd';
+//import Popup from './EditPopup';
 
-const ListItemCreate = (props) => {
-    console.log(props);
-    const [name, setName] = useState('');
-    const [date, setDate] = useState(undefined);
-    const [due, setDue] = useState(undefined);
-    const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState(undefined);
-    const [important, setImportant] = useState(false)
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('test', name, date, due, description, duration, important);
-        let req =
-        {
-            name: name, date: date, timedue: due, description: description, duration: duration, important: important
-        } 
-        console.log(req);
-        fetch('http://localhost:4000/list/create', {
-            method: 'POST',
-            body: JSON.stringify(req),
+
+const EditListItem = (props) => {
+    console.log(props)
+    //console.log(props.list.itemToEdit);
+    const [editName, setEditName] = useState(props.entryToEdit.name);
+    const [editDate, setEditDate] = useState(props.entryToEdit.date);
+    const [editTimeDue, setEditTimeDue] = useState(props.entryToEdit.timedue);
+    const [editDescription, setEditDescription] = useState(props.entryToEdit.description);
+    const [editDuration, setEditDuration] = useState(props.entryToEdit.duration);
+    const [editCompleted, setEditCompleted] = useState(props.entryToEdit.completed);
+    const [editImportant, setEditImportant] = useState(props.entryToEdit.important);
+    const listUpdate = (event) => {
+        event.preventDefault();
+        fetch(`${APIURL}/list/${props.itemToEdit}`, {
+            method: 'PUT',
+            body: JSON.stringify({list: {name: editName, date: editDate, timedue: editTimeDue, description: editDescription, duration: editDuration}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': props.sessionToken
+                'Authorization': props.token
             })
-        }) 
-        //.then((props.setCreate(false)));
-        //.then((res) => res.json())
-        // .then((logData) => {
-        //     console.log(logData);
-        //     setName('');
-        //     setDate('');
-        //     setDue('');
-        //     setDescription('');
-        //     setDuration('');
-        //     props.fetchList();
-        // })
+        }) .then((res => {
+            //props.setList([]);
+            props.setItemToEdit(undefined);
+        }))
     }
 
-    return(
-        <div>Create List Item
-        <form>
-            <input type='text' value={name} placeholder='ToDo Item'onChange={(e) => setName(e.target.value)}/>
-            <input type='text' value={date} placeholder='Due Date'onChange={(e) => setDate(e.target.value)}/>
-            <input type='text' value={due} placeholder='Due Time'onChange={(e) => setDue(e.target.value)}/>
-            <input type='text' value={description} placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
-            <input type='text' value={duration} placeholder='Duration'onChange={(e) => setDuration(e.target.value)}/>
-            {/* <input type='checkbox' value={important} id='important' onChange={(e) => setImportant(e.target.value)}>Important</input> */}
-            <button type='submit' onClick={handleSubmit}> Create Your List!</button>
-        </form>
+
+    return (
+        <div> Edit List
+            <form className="editList">
+                <label for='nameInp'> Name: </label>
+            <Input className='nameInp' placeholder={editName} bordered={false}  />
+            <label for='nameInp'> Date: </label>
+            <Input placeholder={editDate} bordered={false}  />
+            <label for='nameInp'> Time Due: </label>
+            <Input placeholder={editTimeDue} bordered={false}  />
+            <label for='nameInp'> Description: </label>
+            <Input placeholder={editDescription} bordered={false}  />
+            <label for='nameInp'> Duration: </label>
+            <Input placeholder={editDuration} bordered={false}  />
+            <button> Save </button>
+            {/* <button type='submit' onClick={listUpdate}>Save</button> */}
+            </form>
+            
         </div>
     )
 
 }
 
-export default ListItemCreate;
 
-// goes to /list/create endpoint
+
+
+
+
+export default EditListItem;
+// goes to /list/update endpoint
+
 

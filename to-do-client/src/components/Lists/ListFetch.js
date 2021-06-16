@@ -34,7 +34,7 @@ const List = props => {
     useEffect(() => {
         console.log('fetch list')
         fetchList()
-    }, []);
+    }, [setList, setCreate, setImportant, setDeleteStatus, setCompleted]);
 
     const displayReturn = () =>{
         if(create){
@@ -46,7 +46,7 @@ const List = props => {
             return(
             <ViewImportant important={important} setImportant={setImportant} sessionToken={props.sessionToken} setList={setList} list={list}/>)
         } else if(completed){
-             console.log('completed')
+            console.log('completed')
             return(
 
             <div completed={completed} setCompleted={setCompleted}><ViewCompleted sessionToken = {props.sessionToken} /></div>)

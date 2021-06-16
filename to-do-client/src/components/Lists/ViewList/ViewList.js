@@ -35,9 +35,8 @@ const DisplayList = (props) => {
                     <td>{list.timedue}</td>
                     <td>{list.description}</td>
                     <td>{list.duration}</td>
-                    <td>{list.completed}</td>
-                    <td>{list.important}</td>
-                    {/* <td><button>Edit</button></td> */}
+                    <td>{booleanReturn(list.important)}</td>
+                    {/* <td>{list.important}</td> */}
                     <td><Button onClick={() => { setItemToEdit(list.id); setEntryToEdit(list)}}>Edit</Button></td>
                     <td><Button onClick={() => { deleteListItem(list.id) }}>Delete</Button></td>
 
@@ -46,6 +45,8 @@ const DisplayList = (props) => {
         })
 
     }
+
+    const booleanReturn = (info) => info === true ? '!' : null
 
     const columns = [
         {
@@ -123,8 +124,9 @@ const DisplayList = (props) => {
                     <th>Time Due</th>
                     <th>Description</th>
                     <th>Duration</th>
-                    <th>Completed?</th>
+                    {/* <th>Completed?</th> */}
                     <th>Important</th>
+                    <th></th>
                     <th></th>
                 </tr>
             <tbody>
