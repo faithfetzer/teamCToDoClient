@@ -34,7 +34,7 @@ const List = props => {
     useEffect(() => {
         console.log('fetch list')
         fetchList()
-    }, []);
+    }, [setList, setCreate, setImportant, setDeleteStatus, setCompleted]);
 
     const displayReturn = () =>{
         if(create){

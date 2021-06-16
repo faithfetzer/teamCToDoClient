@@ -21,7 +21,8 @@ const ViewImportant = (props) => {
         }) 
         .then(res => res.json())
         .then(json => setImportantList(json))
-        .then(console.log(importantList))
+
+        console.log(importantList)
     }
 
     const deleteListItem = (id) => {
@@ -38,30 +39,31 @@ const ViewImportant = (props) => {
     useEffect(()=>{
         console.log('view important')
         viewImportant()
-    }, [props.setImportant]);
+    }, []);
 
-    // const listMapper = () => {
-    // 
-    //     return importantList.map((list, index) => {
-    //         return(
-    //             <tr key={index}>
-    //                 {/* <th scope="row">{list.id}</th> */}
-    //                 <td>{list.name}</td>
-    //                 <td>{list.date}</td>
-    //                 <td>{list.timedue}</td>
-    //                 <td>{list.description}</td>
-    //                 <td>{list.duration}</td>
-    //                 <td>{list.completed}</td>
-    //                 <td>{list.important}</td>
-    //                 <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
-    //                 <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
+    const listMapper = () => {
+    
+        return importantList.map((list, index) => {
+            return(
+                <tr key={index}>
+                    {/* <th scope="row">{list.id}</th> */}
+                    <td>{list.name}</td>
+                    <td>{list.date}</td>
+                    <td>{list.timedue}</td>
+                    <td>{list.description}</td>
+                    <td>{list.duration}</td>
+                    {/* <td>{list.completed}</td> */}
+                    <td>{booleanReturn(list.important)}</td>
+                    <td><Button onClick={() => {setItemToEdit(list.id)}}>Edit</Button></td>
+                    <td><Button  onClick={() => {deleteListItem()}}>Delete</Button></td>
                     
-    //             </tr>
-    //         )
-    //     })
+                </tr>
+            )
+        })
 
-    // }
+    }
 
+    const booleanReturn = (info) => info === true ? '!' : null
 
     // const columns = [
     //     {
@@ -139,14 +141,14 @@ const ViewImportant = (props) => {
                     <th>time due</th>
                     <th>description</th>
                     <th>duration</th>
-                    <th>completed</th>
+                    {/* <th>completed</th> */}
                     <th>important</th>
                     <th></th>
-                    
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                {/* {listMapper()} */}
+                {listMapper()}
             </tbody>
         </table>
 
