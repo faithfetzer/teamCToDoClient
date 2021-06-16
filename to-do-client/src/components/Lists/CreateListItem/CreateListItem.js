@@ -18,8 +18,8 @@ const ListItemCreate = (props) => {
 
         let req ={
             name: name, 
-            date: date.value, 
-            timedue: due.value, 
+            date: date, 
+            timedue: due, 
             description: description, 
             duration: duration, 
             important: important
@@ -37,7 +37,7 @@ const ListItemCreate = (props) => {
         }).then((res) => res.json())
             .then((logData) => {
                 console.log(logData);
-                setName();
+                setName('');
                 setDate(undefined);
                 setDue(undefined);
                 setDescription('');
@@ -81,7 +81,7 @@ const ListItemCreate = (props) => {
                 <br/>
                 <label htmlFor="important">Important?</label>
                 <br/>
-                <input id="important" type="checkbox" value={important} onChange={(e) => setImportant(e.target.value)}/>
+                <input id="important" type="checkbox" value={important} onSubmit={(e) => setImportant(e.target.value)}/>
                 <br/>
                 <button type='submit' onClick={handleSubmit}> Add Item to Your List!</button>
             </form>

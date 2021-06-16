@@ -15,6 +15,7 @@ const List = props => {
     const [ create, setCreate] = useState(false);
     const [ important, setImportant] = useState(false);
     const [deleteStatus, setDeleteStatus] =useState(false);
+    const [viewStatus, setViewStatus] = useState(true);
 
     const fetchList = () => {
         let url = `${APIURL}/list/`;
@@ -34,7 +35,7 @@ const List = props => {
     useEffect(() => {
         console.log('fetch list')
         fetchList()
-    }, [setList, setCreate, setImportant, setDeleteStatus, setCompleted]);
+    }, [setList, setCreate, setImportant, setDeleteStatus, setCompleted, setViewStatus]);
 
     const displayReturn = () =>{
         if(create){
@@ -60,7 +61,7 @@ const List = props => {
         } else{
 
         return(
-        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList}/>)
+        <DisplayList list={list} sessionToken={props.sessionToken} setList={setList} createButton={createButton()} setViewStatus={setViewStatus}/>)
     }
     }
 
@@ -99,8 +100,6 @@ const List = props => {
         }
     }
 
-
-
     {/* const deleteUserButton = () =>{
         if(deleteStatus ===false){
             // console.log('delete')
@@ -135,7 +134,7 @@ const List = props => {
         </div>
 </>
 
-        </>
+    
 
     )
 
