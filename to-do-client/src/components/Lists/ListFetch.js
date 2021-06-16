@@ -7,7 +7,6 @@ import ViewImportant from './ViewImportant/ViewImportant';
 import DeleteUser from '../Auth/DeleteUser/DeleteUser';
 import {Button} from 'antd';
 import './ListFetch.css'
-import CompletedFetch from './ViewCompleted/CompletedFetch';
 
 const List = props => {
     // console.log(props);
@@ -41,7 +40,7 @@ const List = props => {
         if(create){
             // console.log('create')
             return(
-            <ListItemCreate create={create} setCreate={setCreate}/>)
+            <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken}/>)
         } else if(important){
             // console.log('important')
             return(
