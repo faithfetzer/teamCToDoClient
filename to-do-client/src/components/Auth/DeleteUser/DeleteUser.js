@@ -29,7 +29,7 @@ const DeleteUser = (props) => {
                 'Authorization': props.sessionToken
             })
         })
-        .then(console.log('user deleted'))
+        // .then(console.log('user deleted'))
         .then(props.setSessionToken('undefined'))
         .catch(err => console.log(err))
     } 
