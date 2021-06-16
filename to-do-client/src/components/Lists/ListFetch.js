@@ -35,7 +35,7 @@ const List = props => {
     useEffect(() => {
         console.log('fetch list')
         fetchList()
-    }, [setList, setCreate, setImportant, setDeleteStatus, setCompleted, setViewStatus]);
+    }, []);
 
     const displayReturn = () =>{
         if(create){
@@ -99,8 +99,13 @@ const List = props => {
             )
         }
     }
+        // <>
+        //     <button>
+        //     <DisplayList list={list} sessionToken={props.sessionToken}/>
+        //     </button>
+// }
 
-    {/* const deleteUserButton = () =>{
+    const deleteUserButton = () =>{
         if(deleteStatus ===false){
             // console.log('delete')
             return(
@@ -115,10 +120,9 @@ const List = props => {
 
     return (
         <>
-            <>
-                <button>
-                <DisplayList list={list} sessionToken={props.sessionToken}/>
-                </button>
+//                 <button>
+//                 <DisplayList list={list} sessionToken={props.sessionToken}/>
+//                 </button>
         <div className="listFetch"> 
             <div>
             {createButton()}
@@ -133,8 +137,6 @@ const List = props => {
             {/* {deleteUserButton()} */}
         </div>
 </>
-
-    
 
     )
 
