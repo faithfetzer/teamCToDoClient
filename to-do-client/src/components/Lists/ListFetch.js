@@ -116,7 +116,7 @@ const List = props => {
                     <Button onClick={() => {setDeleteStatus(false); setImportant(false); setCompleted(false); setCreate(false);}}>Cancel User Delete</Button>
                     )
                 }
-            }
+
 
     return (
         <>
