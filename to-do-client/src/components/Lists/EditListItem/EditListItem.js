@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import APIURL from '../../../helpers/environment';
-import Popup from './EditPopup';
+import { Input } from 'antd';
+//import Popup from './EditPopup';
 
 
 const EditListItem = (props) => {
@@ -30,8 +31,22 @@ const EditListItem = (props) => {
 
 
     return (
-        <div>
-            <Popup />
+        <div> Edit List
+            <form className="editList">
+                <label for='nameInp'> Name: </label>
+            <Input className='nameInp' placeholder={editName} bordered={false}  />
+            <label for='nameInp'> Date: </label>
+            <Input placeholder={editDate} bordered={false}  />
+            <label for='nameInp'> Time Due: </label>
+            <Input placeholder={editTimeDue} bordered={false}  />
+            <label for='nameInp'> Description: </label>
+            <Input placeholder={editDescription} bordered={false}  />
+            <label for='nameInp'> Duration: </label>
+            <Input placeholder={editDuration} bordered={false}  />
+            <button> Save </button>
+            {/* <button type='submit' onClick={listUpdate}>Save</button> */}
+            </form>
+            
         </div>
     )
 

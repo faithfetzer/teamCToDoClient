@@ -40,7 +40,7 @@ const List = props => {
         if(create){
             // console.log('create')
             return(
-            <ListItemCreate create={create} setCreate={setCreate}/>)
+            <ListItemCreate create={create} setCreate={setCreate} sessionToken={props.sessionToken}/>)
         } else if(important){
             // console.log('important')
             return(
